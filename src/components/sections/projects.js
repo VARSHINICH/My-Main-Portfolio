@@ -25,17 +25,35 @@ const StyledProjectsSection = styled.section`
   }
 
   .projects-grid {
-    ${({ theme }) => theme.mixins.resetList};
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 15px;
-    position: relative;
-    margin-top: 50px;
+  ${({ theme }) => theme.mixins.resetList};
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: row; /* Align items in a row */
+  justify-content: center; /* Center the items horizontally */
+  align-items: flex-start; /* Align items at the top */
+  gap: 20px; /* Add spacing between items */
+  flex-wrap: wrap; /* Allow wrapping if needed on smaller screens */
+  margin-top: 50px;
 
-    @media (max-width: 1080px) {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
+  @media (max-width: 768px) {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: center;
   }
+}
+
+.project-inner {
+  ${({ theme }) => theme.mixins.boxShadow};
+  ${({ theme }) => theme.mixins.flexBetween};
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  height: 250px; /* Set a fixed height for uniformity */
+  width: 300px; /* Set a fixed width for uniformity */
+  padding: 2rem 1.75rem;
+  border-radius: var(--border-radius);
+  background-color: var(--light-navy);
+  transition: var(--transition);
+  overflow: hidden; /* Prevent content overflow */
+}
 
   .more-button {
     ${({ theme }) => theme.mixins.button};
@@ -265,11 +283,11 @@ const Projects = () => {
 
   return (
     <StyledProjectsSection>
-      <h2 ref={revealTitle}>Other Noteworthy Projects</h2>
+      <h2 ref={revealTitle}>Professional Milestones</h2>
 
-      <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
+      {/* <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
         view the archive
-      </Link>
+      </Link> */}
 
       <ul className="projects-grid">
         {prefersReducedMotion ? (
