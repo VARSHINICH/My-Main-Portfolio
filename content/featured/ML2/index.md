@@ -1,7 +1,7 @@
 ---
 date: '4'
 title: 'Smart OCR'
-cover: './ML.jpg'
+cover: './demo.png'
 external: ''
 cta: ''
 tech:

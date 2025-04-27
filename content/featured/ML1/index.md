@@ -1,7 +1,7 @@
 ---
 date: '3'
 title: 'Speech Emotion Recognition System'
-cover: './speechtotext.png'
+cover: './demo1.png'
 external: ''
 cta: ''
 tech:
