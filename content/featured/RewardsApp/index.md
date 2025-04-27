@@ -1,7 +1,7 @@
 ---
 date: '1'
 title: 'Chase Rewards'
-cover: './demo.png'
+cover: './app.png'
 github: ''
 external: ''
 tech:
