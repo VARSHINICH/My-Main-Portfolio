@@ -1,7 +1,7 @@
 ---
 date: '2'
 title: 'Hostel Management'
-cover: './hostelApp1.png'
+cover: './app.png'
 github: 'https://github.com/VARSHINICH/HostelApp'
 external: 'https://hostella.com/'
 tech:
