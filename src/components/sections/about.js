@@ -125,7 +125,20 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['Jave','Python','JavaScript (ES6+)', 'TypeScript', 'React', 'Angular', 'Node.js', 'Springboot','Kafka','AWS','Kubernetes','Docker'];
+  const skills = [
+    'Jave',
+    'Python',
+    'JavaScript (ES6+)',
+    'TypeScript',
+    'React',
+    'Angular',
+    'Node.js',
+    'Springboot',
+    'Kafka',
+    'AWS',
+    'Kubernetes',
+    'Docker',
+  ];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -135,15 +148,20 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! I'm Varshini Challagundla and I love building things that live on the web. My interest in web development started back in 2015 when I began customizing website themes—little did I know, this would spark a passion for coding, problem-solving, and creating powerful web applications.
+              Hello! I'm Varshini Challagundla and I love building things that live on the web. My
+              interest in web development started back in 2015 when I began customizing website
+              themes—little did I know, this would spark a passion for coding, problem-solving, and
+              creating powerful web applications.
             </p>
 
             <p>
               Fast-forward to today, and I’ve had the privilege of working at{' '}
-              <a href="https://www.linkedin.com/company/docbotplus/">a health-tech startup</a>,{' '}
-              and now, at one of the world’s leading fintech companies — <a href="https://www.jpmorgan.com/global">JPMorgan Chase</a>{' '}. From designing low-latency data pipelines to building real-time notification services using Kafka and AWS, I thrive on creating backend architectures that scale.
+              <a href="https://www.linkedin.com/company/docbotplus/">a health-tech startup</a>, and
+              now, at one of the world’s leading fintech companies —{' '}
+              <a href="https://www.jpmorgan.com/global">JPMorgan Chase</a> . From designing
+              low-latency data pipelines to building real-time notification services using Kafka and
+              AWS, I thrive on creating backend architectures that scale.
             </p>
-
 
             <p>Here are a few technologies I’ve been working with recently:</p>
           </div>
@@ -157,7 +175,7 @@ const About = () => {
           <div className="wrapper">
             <StaticImage
               className="img"
-              src="../../images/varshini1.jpg"
+              src="../../images/varshini1.JPG"
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}
