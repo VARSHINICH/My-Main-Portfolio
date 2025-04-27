@@ -71,6 +71,16 @@ module.exports = {
             },
           },
           {
+            resolve: `gatsby-plugin-sharp`,
+            options: {
+              defaults: {
+                formats: [`auto`, `webp`, `png`], // Remove `avif` from the formats array
+                quality: 90,
+                placeholder: `blurred`,
+              },
+            },
+          },
+          {
             // https://www.gatsbyjs.org/packages/gatsby-remark-images
             resolve: 'gatsby-remark-images',
             options: {
