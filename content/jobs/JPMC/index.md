@@ -1,7 +1,7 @@
 ---
 date: '2023-06-01'
 title: 'Software Engineer'
-company: 'JPMorgan Chase & Co'
+company: 'JPMorgan Chase'
 location: 'Hyderabad, IND'
 range: 'June 2023 - Present'
 url: 'https://www.jpmorgan.com/global'
