@@ -1,0 +1,13 @@
+                    SCD PLATFORM FLOW
+                    =================
+
+    [Data Sources] → [ETL Layer] → [SCD Processing] → [Data Warehouse] → [Analytics]
+         │              │              │                    │              │
+         ▼              ▼              ▼                    ▼              ▼
+    ┌─────────┐    ┌─────────┐    ┌─────────┐         ┌─────────┐    ┌─────────┐
+    │ OLTP    │    │ Extract │    │ SCD     │         │ Dims    │    │ BI      │
+    │ CRM     │───▶│Transform│───▶│ Type 1  │────────▶│ Facts   │───▶│ Reports │
+    │ ERP     │    │ Load    │    │ Type 2  │         │ Marts   │    │ ML/AI   │
+    │ APIs    │    └─────────┘    │ Type 3  │         └─────────┘    └─────────┘
+    └─────────┘                   │ Type 6  │
+                                  └─────────┘
