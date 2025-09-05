@@ -4,15 +4,34 @@ import styled from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 
-const StyledHeroSection = styled.section`
+const HeroSection = styled.section`
+  padding-top: 100px; /* Add padding to push content below the header */
+  @media (max-width: 768px) {
+    padding-top: 120px; /* Adjust for mobile view */
+  }
+`;
+
+const StyledHeroSection = styled(HeroSection)`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
   align-items: flex-start;
   min-height: 100vh;
-  padding: 0;
+  padding: 0 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 
   @media (max-width: 480px) and (min-height: 700px) {
     padding-bottom: 10vh;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 15px;
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 10px;
   }
 
   h1 {
@@ -22,8 +41,30 @@ const StyledHeroSection = styled.section`
     font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
     font-weight: 400;
 
+    @media (max-width: 768px) {
+      margin: 0 0 20px 0;
+      text-align: center;
+    }
+
     @media (max-width: 480px) {
-      margin: 0 0 20px 2px;
+      margin: 0 0 15px 0;
+      font-size: clamp(var(--fz-xs), 4vw, var(--fz-sm));
+    }
+  }
+
+  h2 {
+    font-size: clamp(40px, 8vw, 80px);
+    line-height: 1.1;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      text-align: center;
+      font-size: clamp(35px, 7vw, 60px);
+    }
+
+    @media (max-width: 480px) {
+      font-size: clamp(30px, 6vw, 45px);
+      line-height: 1.2;
     }
   }
 
@@ -31,16 +72,55 @@ const StyledHeroSection = styled.section`
     margin-top: 10px;
     color: var(--slate);
     line-height: 0.9;
+    font-size: clamp(20px, 4vw, 40px);
+
+    @media (max-width: 768px) {
+      text-align: center;
+      font-size: clamp(18px, 3.5vw, 30px);
+      line-height: 1.1;
+    }
+
+    @media (max-width: 480px) {
+      font-size: clamp(16px, 3vw, 24px);
+      margin-top: 15px;
+    }
   }
 
   p {
     margin: 20px 0 0;
     max-width: 540px;
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.6;
+
+    @media (max-width: 768px) {
+      text-align: center;
+      max-width: 100%;
+      margin: 20px auto 0;
+      font-size: clamp(14px, 2.5vw, 18px);
+    }
+
+    @media (max-width: 480px) {
+      font-size: clamp(13px, 2.2vw, 16px);
+      margin: 15px auto 0;
+    }
   }
 
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
     margin-top: 50px;
+    font-size: clamp(14px, 2vw, 16px);
+    padding: 12px 20px;
+
+    @media (max-width: 768px) {
+      margin-top: 40px;
+      padding: 10px 18px;
+    }
+
+    @media (max-width: 480px) {
+      margin-top: 30px;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
   }
 
   .hero-stats {
@@ -50,26 +130,55 @@ const StyledHeroSection = styled.section`
     font-family: var(--font-mono);
     font-size: var(--fz-sm);
     color: var(--slate);
+    width: 100%;
+    justify-content: center;
 
     @media (max-width: 768px) {
+      flex-direction: row;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 480px) {
       flex-direction: column;
       gap: 1rem;
+      margin-top: 1rem;
     }
 
     .stat {
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-width: 80px;
+
+      @media (max-width: 768px) {
+        min-width: 70px;
+      }
+
+      @media (max-width: 480px) {
+        min-width: 60px;
+      }
 
       .number {
         color: var(--pink);
-        font-size: var(--fz-xl);
+        font-size: clamp(var(--fz-lg), 3vw, var(--fz-xl));
         font-weight: 600;
+        line-height: 1;
+
+        @media (max-width: 480px) {
+          font-size: clamp(var(--fz-md), 2.5vw, var(--fz-lg));
+        }
       }
 
       .label {
-        font-size: var(--fz-xs);
+        font-size: clamp(var(--fz-xs), 1.5vw, var(--fz-sm));
         text-align: center;
+        margin-top: 4px;
+
+        @media (max-width: 480px) {
+          font-size: var(--fz-xs);
+        }
       }
     }
   }
@@ -83,6 +192,16 @@ const StyledHeroSection = styled.section`
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
     animation: bounce 2s infinite;
+
+    @media (max-width: 768px) {
+      bottom: 20px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 480px) {
+      bottom: 15px;
+      font-size: 11px;
+    }
 
     @keyframes bounce {
       0%,

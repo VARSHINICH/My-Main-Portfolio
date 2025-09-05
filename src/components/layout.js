@@ -13,6 +13,7 @@ const StyledContent = styled.div`
 const Layout = ({ children, location }) => {
   const isHome = location.pathname === '/';
   const [isLoading, setIsLoading] = useState(isHome);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   // Sets target="_blank" rel="noopener noreferrer" on external links
   const handleExternalLinks = () => {
@@ -32,19 +33,46 @@ const Layout = ({ children, location }) => {
       return;
     }
 
-    if (location.hash) {
-      const id = location.hash.substring(1); // location.hash without the '#'
+    // Always start at the top on initial page load
+    if (!hasScrolled) {
+      window.scrollTo(0, 0);
+      setHasScrolled(true);
+    }
+
+    // Prevent automatic scrolling on initial page load
+    if (!hasScrolled && location.hash) {
+      // Clear any hash from URL on initial load to prevent unwanted scrolling
+      if (window.location.hash === '#jobs' || window.location.hash === '#experience') {
+        window.history.replaceState(null, null, window.location.pathname);
+        setHasScrolled(true);
+        return;
+      }
+    }
+
+    // Only scroll to hash if it's explicitly clicked by user
+    if (location.hash && hasScrolled) {
+      const id = location.hash.substring(1);
       setTimeout(() => {
         const el = document.getElementById(id);
         if (el) {
-          el.scrollIntoView();
+          el.scrollIntoView({ behavior: 'smooth' });
           el.focus();
         }
-      }, 0);
+      }, 100);
     }
 
     handleExternalLinks();
-  }, [isLoading]);
+  }, [isLoading, hasScrolled]);
+
+  // Track when user manually navigates
+  useEffect(() => {
+    const handleHashChange = () => {
+      setHasScrolled(true);
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   return (
     <>

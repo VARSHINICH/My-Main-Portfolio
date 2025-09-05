@@ -7,6 +7,15 @@ import { usePrefersReducedMotion } from '@hooks';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
+  padding: 0 20px;
+
+  @media (max-width: 768px) {
+    padding: 0 15px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 10px;
+  }
 
   .inner {
     display: grid;
@@ -15,10 +24,38 @@ const StyledAboutSection = styled.section`
 
     @media (max-width: 768px) {
       display: block;
+      grid-gap: 30px;
+    }
+
+    @media (max-width: 480px) {
+      grid-gap: 20px;
     }
   }
 `;
 const StyledText = styled.div`
+  p {
+    font-size: clamp(16px, 2vw, 18px);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+      font-size: clamp(14px, 2.5vw, 16px);
+    }
+
+    @media (max-width: 480px) {
+      font-size: clamp(13px, 2.2vw, 15px);
+    }
+  }
+
+  h4 {
+    font-size: clamp(18px, 2.5vw, 20px);
+    margin-bottom: 1rem;
+
+    @media (max-width: 480px) {
+      font-size: clamp(16px, 2.2vw, 18px);
+    }
+  }
+
   ul.skills-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(140px, 200px));
@@ -28,12 +65,23 @@ const StyledText = styled.div`
     overflow: hidden;
     list-style: none;
 
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      grid-gap: 0;
+    }
+
     li {
       position: relative;
       margin-bottom: 10px;
       padding-left: 20px;
       font-family: var(--font-mono);
-      font-size: var(--fz-xs);
+      font-size: clamp(var(--fz-xs), 1.5vw, var(--fz-sm));
+
+      @media (max-width: 480px) {
+        font-size: var(--fz-xs);
+        padding-left: 15px;
+        margin-bottom: 8px;
+      }
 
       &:before {
         content: '▹';
@@ -42,6 +90,10 @@ const StyledText = styled.div`
         color: var(--pink);
         font-size: var(--fz-sm);
         line-height: 12px;
+
+        @media (max-width: 480px) {
+          font-size: var(--fz-xs);
+        }
       }
     }
   }
@@ -51,8 +103,15 @@ const StyledPic = styled.div`
   max-width: 300px;
 
   @media (max-width: 768px) {
-    margin: 50px auto 0;
+    margin: 40px auto 0;
+    width: 60%;
+    max-width: 250px;
+  }
+
+  @media (max-width: 480px) {
+    margin: 30px auto 0;
     width: 70%;
+    max-width: 200px;
   }
 
   .wrapper {
@@ -109,6 +168,12 @@ const StyledPic = styled.div`
       top: 20px;
       left: 20px;
       z-index: -1;
+
+      @media (max-width: 480px) {
+        top: 15px;
+        left: 15px;
+        border-width: 1px;
+      }
     }
   }
 `;

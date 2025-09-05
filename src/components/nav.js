@@ -36,6 +36,9 @@ const StyledHeader = styled.header`
   @media (max-width: 768px) {
     padding: 0 25px;
   }
+  @media (max-width: 480px) {
+    padding: 0 15px;
+  }
 
   @media (prefers-reduced-motion: no-preference) {
     ${props =>
@@ -82,6 +85,11 @@ const StyledNav = styled.nav`
       width: 42px;
       height: 42px;
 
+      @media (max-width: 480px) {
+        width: 36px;
+        height: 36px;
+      }
+
       &:hover,
       &:focus {
         svg {
@@ -93,6 +101,8 @@ const StyledNav = styled.nav`
         fill: none;
         transition: var(--transition);
         user-select: none;
+        width: 100%;
+        height: 100%;
       }
     }
   }
@@ -164,9 +174,21 @@ const StyledLinks = styled.div`
   .resume-button {
     ${({ theme }) => theme.mixins.smallButton};
     margin-left: 15px;
-    font-size: var(--fz-xs);
+    font-size: clamp(var(--fz-xxs), 1.5vw, var(--fz-xs));
     position: relative;
     overflow: hidden;
+    padding: 8px 12px;
+
+    @media (max-width: 768px) {
+      margin-left: 10px;
+      padding: 6px 10px;
+    }
+
+    @media (max-width: 480px) {
+      margin-left: 8px;
+      padding: 5px 8px;
+      font-size: var(--fz-xxs);
+    }
 
     &:before {
       content: '';

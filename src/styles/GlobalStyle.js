@@ -126,6 +126,7 @@ const GlobalStyle = createGlobalStyle`
     }
     @media (max-width: 480px) {
       padding: 125px 25px;
+      padding-top: 100px; /* Add padding to account for the header */
     }
 
     &.fillHeight {

@@ -9,9 +9,16 @@ const StyledContactSection = styled.section`
   max-width: 600px;
   margin: 0 auto 100px;
   text-align: center;
+  padding: 0 20px;
 
   @media (max-width: 768px) {
     margin: 0 auto 50px;
+    padding: 0 15px;
+  }
+
+  @media (max-width: 480px) {
+    margin: 0 auto 30px;
+    padding: 0 10px;
   }
 
   .overline {
@@ -19,7 +26,7 @@ const StyledContactSection = styled.section`
     margin-bottom: 20px;
     color: var(--pink);
     font-family: var(--font-mono);
-    font-size: var(--fz-md);
+    font-size: clamp(var(--fz-sm), 2vw, var(--fz-md));
     font-weight: 400;
 
     &:before {
@@ -33,12 +40,46 @@ const StyledContactSection = styled.section`
   }
 
   .title {
-    font-size: clamp(40px, 5vw, 60px);
+    font-size: clamp(30px, 5vw, 60px);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+
+    @media (max-width: 480px) {
+      font-size: clamp(25px, 4vw, 40px);
+    }
+  }
+
+  p {
+    font-size: clamp(16px, 2vw, 18px);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+      font-size: clamp(14px, 2.5vw, 16px);
+    }
+
+    @media (max-width: 480px) {
+      font-size: clamp(13px, 2.2vw, 15px);
+      margin-bottom: 1.5rem;
+    }
   }
 
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
     margin-top: 50px;
+    font-size: clamp(14px, 2vw, 16px);
+    padding: 12px 20px;
+
+    @media (max-width: 768px) {
+      margin-top: 40px;
+      padding: 10px 18px;
+    }
+
+    @media (max-width: 480px) {
+      margin-top: 30px;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
   }
 
   .contact-methods {
@@ -47,6 +88,11 @@ const StyledContactSection = styled.section`
     align-items: center;
     gap: 2rem;
     margin-top: 2rem;
+
+    @media (max-width: 480px) {
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
   }
 
   .social-links {
@@ -54,6 +100,10 @@ const StyledContactSection = styled.section`
     gap: 1rem;
     justify-content: center;
     margin-top: 1rem;
+
+    @media (max-width: 480px) {
+      gap: 0.75rem;
+    }
 
     a {
       ${({ theme }) => theme.mixins.flexCenter};
@@ -64,15 +114,29 @@ const StyledContactSection = styled.section`
       color: var(--slate);
       transition: var(--transition);
 
+      @media (max-width: 480px) {
+        width: 45px;
+        height: 45px;
+      }
+
       &:hover {
         background: var(--pink);
         color: var(--navy);
         transform: translateY(-3px);
+
+        @media (max-width: 768px) {
+          transform: translateY(-2px);
+        }
       }
 
       svg {
         width: 20px;
         height: 20px;
+
+        @media (max-width: 480px) {
+          width: 18px;
+          height: 18px;
+        }
       }
     }
   }
@@ -80,11 +144,34 @@ const StyledContactSection = styled.section`
   .availability {
     margin-top: 2rem;
     font-family: var(--font-mono);
-    font-size: var(--fz-sm);
+    font-size: clamp(var(--fz-xs), 1.5vw, var(--fz-sm));
+
+    @media (max-width: 480px) {
+      margin-top: 1.5rem;
+      font-size: var(--fz-xs);
+    }
 
     p {
       margin: 0.5rem 0;
       color: var(--slate);
+      font-size: inherit;
+
+      @media (max-width: 480px) {
+        margin: 0.4rem 0;
+      }
+    }
+  }
+
+  .response-time {
+    p {
+      font-size: clamp(var(--fz-xxs), 1.2vw, var(--fz-xs));
+      color: var(--slate);
+      margin-top: 2rem;
+
+      @media (max-width: 480px) {
+        margin-top: 1.5rem;
+        font-size: var(--fz-xxs);
+      }
     }
   }
 `;

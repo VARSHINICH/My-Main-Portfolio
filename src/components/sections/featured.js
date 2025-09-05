@@ -251,6 +251,7 @@ const StyledProject = styled.li`
       grid-column: 1 / -1;
       height: 100%;
       opacity: 0.25;
+      pointer-events: none; /* Disable clicks on mobile */
     }
 
     a {
@@ -259,6 +260,11 @@ const StyledProject = styled.li`
       background-color: var(--pink);
       border-radius: var(--border-radius);
       vertical-align: middle;
+
+      @media (max-width: 768px) {
+        pointer-events: none; /* Disable clicks on mobile */
+        cursor: default;
+      }
 
       &:hover,
       &:focus {
@@ -269,6 +275,10 @@ const StyledProject = styled.li`
         .img {
           background: transparent;
           filter: none;
+        }
+
+        @media (max-width: 768px) {
+          background-color: var(--pink); /* Keep original background on mobile */
         }
       }
 
@@ -285,6 +295,10 @@ const StyledProject = styled.li`
         transition: var(--transition);
         background-color: var(--navy);
         mix-blend-mode: screen;
+
+        @media (max-width: 768px) {
+          display: none; /* Hide overlay on mobile */
+        }
       }
     }
 
@@ -298,6 +312,7 @@ const StyledProject = styled.li`
         width: auto;
         height: 100%;
         filter: grayscale(100%) contrast(1) brightness(50%);
+        mix-blend-mode: normal; /* Remove blend mode on mobile */
       }
     }
   }
@@ -402,7 +417,15 @@ const Featured = () => {
                 </div>
 
                 <div className="project-image">
-                  <a href={external ? external : github ? github : '#'}>
+                  <a
+                    href={external ? external : github ? github : '#'}
+                    onClick={e => {
+                      // Prevent clicks on mobile devices
+                      if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        return false;
+                      }
+                    }}>
                     <GatsbyImage image={image} alt={title} className="img" />
                   </a>
                 </div>

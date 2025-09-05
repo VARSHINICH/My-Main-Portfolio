@@ -16,10 +16,10 @@ const variables = css`
     --pink-shadow: rgba(255, 165, 165, 0.3);
 
     /* Complementary Colors (based on color theory) */
-    --mint: #a5ffd6; /* Complementary green */
-    --mint-dark: #7ae6b8; /* Darker mint */
-    --mint-light: #b8ffe3; /* Lighter mint */
-    --mint-tint: rgba(165, 255, 214, 0.1);
+    --coral-light: #ffb5c5; /* Light coral */
+    --coral-dark: #e68a9a; /* Darker coral */
+    --coral-lighter: #ffc5d5; /* Lighter coral */
+    --coral-tint: rgba(255, 181, 197, 0.1);
 
     /* Analogous Colors (warm palette) */
     --coral: #ffa5b5; /* Coral variation */
@@ -29,7 +29,7 @@ const variables = css`
     /* Triadic Colors */
     --lavender: #d6a5ff; /* Lavender accent */
     --sky: #a5d6ff; /* Sky blue accent */
-    --sage: #a5ffa5; /* Sage green accent */
+    --peach-light: #ffb5a5; /* Light peach accent */
 
     /* Background System (warm neutrals) */
     --dark-navy: #2a1f2a; /* Warm dark background */
@@ -46,9 +46,9 @@ const variables = css`
     --white: #faf5f5; /* Warm white */
 
     /* Accent Colors */
-    --green: #a5ffa5; /* Light green */
-    --green-dark: #7ae67a; /* Darker green */
-    --green-tint: rgba(165, 255, 165, 0.1);
+    --coral-accent: #ffa5b5; /* Coral accent */
+    --coral-accent-dark: #e67a8a; /* Darker coral accent */
+    --coral-accent-tint: rgba(255, 165, 181, 0.1);
 
     --blue: #a5d6ff; /* Light blue */
     --blue-dark: #7ab8e6; /* Darker blue */
@@ -95,7 +95,7 @@ const variables = css`
 
     /* Beautiful Gradients */
     --gradient-primary: linear-gradient(135deg, var(--pink), var(--coral));
-    --gradient-secondary: linear-gradient(135deg, var(--mint), var(--sage));
+    --gradient-secondary: linear-gradient(135deg, var(--coral-light), var(--peach-light));
     --gradient-accent: linear-gradient(135deg, var(--lavender), var(--sky));
     --gradient-bg: linear-gradient(135deg, var(--navy), var(--light-navy));
     --gradient-text: linear-gradient(135deg, var(--lightest-slate), var(--pink));
@@ -103,7 +103,7 @@ const variables = css`
     /* Enhanced Shadows */
     --shadow-pink: 0 10px 30px rgba(255, 165, 165, 0.3);
     --shadow-coral: 0 10px 30px rgba(255, 165, 181, 0.3);
-    --shadow-mint: 0 10px 30px rgba(165, 255, 214, 0.3);
+    --shadow-coral-light: 0 10px 30px rgba(255, 181, 197, 0.3);
     --shadow-lavender: 0 10px 30px rgba(214, 165, 255, 0.3);
   }
 `;

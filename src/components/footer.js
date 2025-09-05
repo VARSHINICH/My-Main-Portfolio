@@ -9,8 +9,17 @@ const StyledFooter = styled.footer`
   flex-direction: column;
   height: auto;
   min-height: 70px;
-  padding: 15px;
+  padding: 15px 20px;
   text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+    min-height: 60px;
+  }
 `;
 
 const StyledSocialLinks = styled.div`
@@ -24,6 +33,11 @@ const StyledSocialLinks = styled.div`
     color: var(--light-slate);
   }
 
+  @media (max-width: 480px) {
+    max-width: 250px;
+    margin: 0 auto 8px;
+  }
+
   ul {
     ${({ theme }) => theme.mixins.flexBetween};
     padding: 0;
@@ -32,9 +46,25 @@ const StyledSocialLinks = styled.div`
 
     a {
       padding: 10px;
+      transition: var(--transition);
+
+      @media (max-width: 480px) {
+        padding: 8px;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        color: var(--pink);
+      }
+
       svg {
         width: 20px;
         height: 20px;
+
+        @media (max-width: 480px) {
+          width: 18px;
+          height: 18px;
+        }
       }
     }
   }
@@ -43,26 +73,55 @@ const StyledSocialLinks = styled.div`
 const StyledCredit = styled.div`
   color: var(--light-slate);
   font-family: var(--font-mono);
-  font-size: var(--fz-xxs);
-  line-height: 1;
+  font-size: clamp(var(--fz-xxs), 1.2vw, var(--fz-xs));
+  line-height: 1.2;
+
+  @media (max-width: 480px) {
+    font-size: var(--fz-xxs);
+    line-height: 1.1;
+  }
 
   a {
     padding: 10px;
+    transition: var(--transition);
+
+    @media (max-width: 480px) {
+      padding: 8px;
+    }
+
+    &:hover {
+      color: var(--pink);
+    }
   }
 
   .github-stats {
     margin-top: 10px;
 
+    @media (max-width: 480px) {
+      margin-top: 8px;
+    }
+
     & > span {
       display: inline-flex;
       align-items: center;
       margin: 0 7px;
-    }
-    svg {
-      display: inline-block;
-      margin-right: 5px;
-      width: 14px;
-      height: 14px;
+
+      @media (max-width: 480px) {
+        margin: 0 5px;
+      }
+
+      svg {
+        display: inline-block;
+        margin-right: 5px;
+        width: 14px;
+        height: 14px;
+
+        @media (max-width: 480px) {
+          width: 12px;
+          height: 12px;
+          margin-right: 3px;
+        }
+      }
     }
   }
 `;
