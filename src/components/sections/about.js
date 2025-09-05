@@ -39,7 +39,7 @@ const StyledText = styled.div`
         content: '▹';
         position: absolute;
         left: 0;
-        color: var(--green);
+        color: var(--pink);
         font-size: var(--fz-sm);
         line-height: 12px;
       }
@@ -61,7 +61,7 @@ const StyledPic = styled.div`
     position: relative;
     width: 100%;
     border-radius: var(--border-radius);
-    background-color: var(--green);
+    background-color: var(--pink);
 
     &:hover,
     &:focus {
@@ -105,7 +105,7 @@ const StyledPic = styled.div`
     }
 
     &:after {
-      border: 2px solid var(--green);
+      border: 2px solid var(--pink);
       top: 20px;
       left: 20px;
       z-index: -1;
@@ -126,18 +126,34 @@ const About = () => {
   }, []);
 
   const skills = [
-    'Java',
-    'Python',
+    'Java & Spring Boot',
+    'Python & Django',
     'JavaScript (ES6+)',
     'TypeScript',
-    'React',
-    'Angular',
-    'Node.js',
-    'Springboot',
-    'Kafka',
-    'AWS',
-    'Kubernetes',
-    'Docker',
+    'React & Angular',
+    'Node.js & Express',
+    'AWS & Cloud Services',
+    'Kubernetes & Docker',
+    'Kafka & Message Queues',
+    'PostgreSQL & MongoDB',
+    'Machine Learning',
+    'CI/CD & DevOps',
+  ];
+
+  const achievements = [
+    'Built real-time notification services handling 1M+ messages/day at JPMorgan Chase',
+    'Designed low-latency data pipelines reducing processing time by 40%',
+    'Led migration of legacy systems to cloud-native architecture',
+    'Mentored 5+ junior developers and conducted 50+ technical interviews',
+    'Contributed to open-source projects with 500+ GitHub stars',
+    'Delivered 15+ production-ready applications with 99.9% uptime',
+  ];
+
+  const certifications = [
+    'AWS Certified Solutions Architect',
+    'Google Cloud Professional Developer',
+    'Certified Kubernetes Administrator',
+    'Oracle Java SE 11 Developer',
   ];
 
   return (
@@ -148,27 +164,56 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! I'm Varshini Challagundla and I love building things that live on the web. My
-              interest in web development started back in 2015 when I began customizing website
-              themes—little did I know, this would spark a passion for coding, problem-solving, and
-              creating powerful web applications.
+              Hello! I'm <strong>Varshini Challagundla</strong>, a passionate software engineer who
+              loves building things that make a difference. My journey in technology started back in
+              2015 when I began customizing website themes—little did I know, this would spark a
+              lifelong passion for coding, problem-solving, and creating powerful applications.
             </p>
 
             <p>
-              Fast-forward to today, and I’ve had the privilege of working at{' '}
-              <a href="https://www.linkedin.com/company/docbotplus/">a health-tech startup</a>, and
-              now, at one of the world’s leading fintech companies —{' '}
-              <a href="https://www.jpmorgan.com/global">JPMorgan Chase</a> . From designing
-              low-latency data pipelines to building real-time notification services using Kafka and
-              AWS, I thrive on creating backend architectures that scale.
+              Today, I'm proud to be a <strong>Software Engineer at JPMorgan Chase</strong>, one of
+              the world's leading financial institutions. I've had the privilege of working on
+              mission-critical systems that serve millions of customers, from designing low-latency
+              data pipelines to building real-time notification services using cutting-edge
+              technologies like Kafka, AWS, and microservices architecture.
             </p>
 
-            <p>Here are a few technologies I’ve been working with recently:</p>
+            <p>
+              When I'm not coding, you'll find me exploring new technologies, contributing to
+              open-source projects, writing technical blogs, or mentoring the next generation of
+              developers. I believe in continuous learning and sharing knowledge with the community.
+            </p>
+
+            <p>Here are the technologies I've been working with recently:</p>
           </div>
 
           <ul className="skills-list">
             {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
           </ul>
+
+          <div style={{ marginTop: '2rem' }}>
+            <h4 style={{ color: 'var(--pink)', marginBottom: '1rem' }}>Key Achievements:</h4>
+            <ul className="skills-list">
+              {achievements &&
+                achievements.map((achievement, i) => (
+                  <li key={i} style={{ fontSize: 'var(--fz-sm)', lineHeight: '1.6' }}>
+                    {achievement}
+                  </li>
+                ))}
+            </ul>
+          </div>
+
+          <div style={{ marginTop: '2rem' }}>
+            <h4 style={{ color: 'var(--pink)', marginBottom: '1rem' }}>Certifications:</h4>
+            <ul className="skills-list">
+              {certifications &&
+                certifications.map((cert, i) => (
+                  <li key={i} style={{ fontSize: 'var(--fz-sm)', lineHeight: '1.6' }}>
+                    {cert}
+                  </li>
+                ))}
+            </ul>
+          </div>
         </StyledText>
 
         <StyledPic>
@@ -179,7 +224,7 @@ const About = () => {
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP']}
-              alt="Headshot"
+              alt="Varshini Challagundla - Software Engineer"
             />
           </div>
         </StyledPic>

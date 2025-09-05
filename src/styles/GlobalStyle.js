@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
 
   /* Provide basic, default focus styles.*/
   :focus {
-    outline: 2px dashed var(--green);
+    outline: 2px dashed var(--pink);
     outline-offset: 3px;
   }
 
@@ -46,7 +46,7 @@ const GlobalStyle = createGlobalStyle`
     focus.
   */
   :focus-visible {
-    outline: 2px dashed var(--green);
+    outline: 2px dashed var(--pink);
     outline-offset: 3px;
   }
 
@@ -194,7 +194,7 @@ const GlobalStyle = createGlobalStyle`
       counter-increment: section;
       content: '0' counter(section) '.';
       margin-right: 10px;
-      color: var(--green);
+      color: var(--pink);
       font-family: var(--font-mono);
       font-size: clamp(var(--fz-md), 3vw, var(--fz-xl));
       font-weight: 400;
@@ -261,7 +261,7 @@ const GlobalStyle = createGlobalStyle`
 
     &:hover,
     &:focus {
-      color: var(--green);
+      color: var(--pink);
     }
 
     &.inline-link {
@@ -325,14 +325,14 @@ const GlobalStyle = createGlobalStyle`
           content: '▹';
           position: absolute;
           left: 0;
-          color: var(--green);
+          color: var(--pink);
         }
       }
     }
   }
 
   blockquote {
-    border-left-color: var(--green);
+    border-left-color: var(--pink);
     border-left-style: solid;
     border-left-width: 1px;
     margin-left: 0px;
@@ -372,7 +372,7 @@ const GlobalStyle = createGlobalStyle`
 
     &:focus,
     &:active {
-      background-color: var(--green);
+      background-color: var(--pink);
       color: var(--navy);
       top: 0;
       left: 0;
@@ -384,18 +384,18 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #logo {
-    color: var(--green);
+    color: var(--pink);
   }
 
   .overline {
-    color: var(--green);
+    color: var(--pink);
     font-family: var(--font-mono);
     font-size: var(--fz-md);
     font-weight: 400;
   }
 
   .subtitle {
-    color: var(--green);
+    color: var(--pink);
     margin: 0 0 20px 0;
     font-size: var(--fz-md);
     font-family: var(--font-mono);
@@ -418,7 +418,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     margin-bottom: 50px;
-    color: var(--green);
+    color: var(--pink);
 
     .arrow {
       display: block;
@@ -444,6 +444,87 @@ const GlobalStyle = createGlobalStyle`
   ${TransitionStyles};
 
   ${PrismStyles};
+
+  /* Add beautiful scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--navy);
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--pink), var(--coral));
+    border-radius: 10px;
+    border: 2px solid var(--navy);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--coral), var(--pink));
+  }
+
+  /* Enhanced selection */
+  ::selection {
+    background: linear-gradient(135deg, var(--pink-tint), var(--coral));
+    color: var(--white);
+  }
+
+  /* Beautiful focus styles */
+  :focus {
+    outline: 2px solid var(--pink);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px var(--pink-tint);
+  }
+
+  /* Enhanced links */
+  a {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    
+    &:hover {
+      color: var(--pink);
+      text-shadow: 0 0 8px var(--pink-shadow);
+    }
+  }
+
+  /* Beautiful buttons */
+  button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px var(--pink-shadow);
+    }
+  }
+
+  /* Enhanced headings */
+  h1, h2, h3, h4, h5, h6 {
+    background: linear-gradient(135deg, var(--lightest-slate), var(--pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Beautiful code blocks */
+  pre[class*='language-'] {
+    background: linear-gradient(135deg, var(--navy), var(--light-navy));
+    border: 1px solid var(--pink-tint);
+    box-shadow: 0 10px 30px var(--pink-shadow);
+  }
+
+  /* Enhanced images */
+  img {
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    
+    &:hover {
+      transform: scale(1.02);
+      filter: brightness(1.1) saturate(1.1);
+    }
+  }
 `;
 
 export default GlobalStyle;

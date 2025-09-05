@@ -1,16 +1,16 @@
 import { css } from 'styled-components';
 
 const prismColors = {
-  bg: `#112340`,
-  lineHighlight: `#1d2d50`,
-  blue: `#5ccfe6`,
-  purple: `#c3a6ff`,
-  green: `#bae67e`,
-  yellow: `#ffd580`,
-  orange: `#ffae57`,
-  red: `#ef6b73`,
-  grey: `#a2aabc`,
-  comment: `#8695b799`,
+  bg: `#3A2F3A` /* Updated to match new navy */,
+  lineHighlight: `#4A3F4A` /* Updated to match light-navy */,
+  blue: `#A5D6FF` /* Updated to match new blue */,
+  purple: `#D6A5FF` /* Updated to match new purple */,
+  green: `#A5FFA5` /* Updated to match new green */,
+  yellow: `#FFE6A5` /* Updated to match new yellow */,
+  orange: `#FFB5A5` /* Updated to match peach */,
+  red: `#FFA5B5` /* Updated to match coral */,
+  grey: `#AA9FAA` /* Updated to match new slate */,
+  comment: `#8A7F8A99` /* Updated to match dark-slate with transparency */,
 };
 
 // https://www.gatsbyjs.org/packages/gatsby-remark-prismjs
@@ -83,8 +83,8 @@ const PrismStyles = css`
   /* Line highlighting */
   .gatsby-highlight-code-line {
     display: block;
-    background-color: ${prismColors.lineHighlight};
-    border-left: 2px solid var(--green);
+    background-color: var(--pink-tint);
+    border-left: 2px solid var(--pink);
     padding-left: calc(1em + 2px);
     padding-right: 1em;
     margin-right: -1.35em;

@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
-import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+import { Icon } from '@components/icons';
 
 const StyledProjectsSection = styled.section`
   display: flex;
@@ -25,35 +25,35 @@ const StyledProjectsSection = styled.section`
   }
 
   .projects-grid {
-  ${({ theme }) => theme.mixins.resetList};
-  display: flex; /* Use flexbox for alignment */
-  flex-direction: row; /* Align items in a row */
-  justify-content: center; /* Center the items horizontally */
-  align-items: flex-start; /* Align items at the top */
-  gap: 20px; /* Add spacing between items */
-  flex-wrap: wrap; /* Allow wrapping if needed on smaller screens */
-  margin-top: 50px;
+    ${({ theme }) => theme.mixins.resetList};
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: row; /* Align items in a row */
+    justify-content: center; /* Center the items horizontally */
+    align-items: flex-start; /* Align items at the top */
+    gap: 20px; /* Add spacing between items */
+    flex-wrap: wrap; /* Allow wrapping if needed on smaller screens */
+    margin-top: 50px;
 
-  @media (max-width: 768px) {
-    flex-direction: column; /* Stack items vertically on smaller screens */
-    align-items: center;
+    @media (max-width: 768px) {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      align-items: center;
+    }
   }
-}
 
-.project-inner {
-  ${({ theme }) => theme.mixins.boxShadow};
-  ${({ theme }) => theme.mixins.flexBetween};
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  height: 250px; /* Set a fixed height for uniformity */
-  width: 300px; /* Set a fixed width for uniformity */
-  padding: 2rem 1.75rem;
-  border-radius: var(--border-radius);
-  background-color: var(--light-navy);
-  transition: var(--transition);
-  overflow: hidden; /* Prevent content overflow */
-}
+  .project-inner {
+    ${({ theme }) => theme.mixins.boxShadow};
+    ${({ theme }) => theme.mixins.flexBetween};
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    height: 250px; /* Set a fixed height for uniformity */
+    width: 300px; /* Set a fixed width for uniformity */
+    padding: 2rem 1.75rem;
+    border-radius: var(--border-radius);
+    background-color: var(--light-navy);
+    transition: var(--transition);
+    overflow: hidden; /* Prevent content overflow */
+  }
 
   .more-button {
     ${({ theme }) => theme.mixins.button};
@@ -99,7 +99,7 @@ const StyledProject = styled.li`
     margin-bottom: 35px;
 
     .folder {
-      color: var(--green);
+      color: var(--pink);
       svg {
         width: 40px;
         height: 40px;
@@ -200,6 +200,7 @@ const Projects = () => {
               tech
               github
               external
+              date
             }
             html
           }
@@ -260,34 +261,30 @@ const Projects = () => {
           </div>
 
           <h3 className="project-title">
-            <a href={external} target="_blank" rel="noreferrer">
+            <a href={external ? external : github} target="_blank" rel="noreferrer">
               {title}
             </a>
           </h3>
 
           <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
-        </header>
 
-        <footer>
-          {tech && (
-            <ul className="project-tech-list">
-              {tech.map((tech, i) => (
-                <li key={i}>{tech}</li>
-              ))}
-            </ul>
-          )}
-        </footer>
+          <footer>
+            {tech && (
+              <ul className="project-tech-list">
+                {tech.map((tech, i) => (
+                  <li key={i}>{tech}</li>
+                ))}
+              </ul>
+            )}
+          </footer>
+        </header>
       </div>
     );
   };
 
   return (
-    <StyledProjectsSection>
+    <StyledProjectsSection id="projects">
       <h2 ref={revealTitle}>Professional Milestones</h2>
-
-      {/* <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
-        view the archive
-      </Link> */}
 
       <ul className="projects-grid">
         {prefersReducedMotion ? (

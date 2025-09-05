@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 import { srConfig } from '@config';
@@ -75,7 +74,7 @@ const StyledTabButton = styled.button`
   padding: 0 20px 2px;
   border-left: 2px solid var(--lightest-navy);
   background-color: transparent;
-  color: ${({ isActive }) => (isActive ? 'var(--green)' : 'var(--slate)')};
+  color: ${({ isActive }) => (isActive ? 'var(--pink)' : 'var(--slate)')};
   font-family: var(--font-mono);
   font-size: var(--fz-xs);
   text-align: left;
@@ -107,10 +106,9 @@ const StyledHighlight = styled.div`
   width: 2px;
   height: var(--tab-height);
   border-radius: var(--border-radius);
-  background: var(--green);
+  background: var(--pink);
   transform: translateY(calc(${({ activeTabId }) => activeTabId} * var(--tab-height)));
   transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-delay: 0.1s;
 
   @media (max-width: 600px) {
     top: auto;
@@ -120,6 +118,13 @@ const StyledHighlight = styled.div`
     height: 2px;
     margin-left: 50px;
     transform: translateX(calc(${({ activeTabId }) => activeTabId} * var(--tab-width)));
+
+    &:first-of-type {
+      margin-left: 50px;
+    }
+    &:last-of-type {
+      margin-left: 25px;
+    }
   }
   @media (max-width: 480px) {
     margin-left: 25px;
@@ -152,7 +157,7 @@ const StyledTabPanel = styled.div`
     line-height: 1.3;
 
     .company {
-      color: var(--green);
+      color: var(--pink);
     }
   }
 
@@ -165,34 +170,55 @@ const StyledTabPanel = styled.div`
 `;
 
 const Jobs = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      jobs: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/jobs/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              company
-              location
-              range
-              url
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
-
-  const jobsData = data.jobs.edges;
+  const jobsData = [
+    {
+      company: 'JPMorgan Chase & Co.',
+      position: 'Software Engineer',
+      location: 'New York, NY',
+      range: '2022 - Present',
+      url: 'https://www.jpmorgan.com/',
+      description: [
+        'Developed and maintained mission-critical financial applications serving 50M+ customers',
+        'Built real-time notification services using Kafka, handling 1M+ messages per day',
+        'Designed low-latency data pipelines reducing processing time by 40%',
+        'Led migration of legacy systems to cloud-native architecture on AWS',
+        'Mentored 5+ junior developers and conducted 50+ technical interviews',
+        'Collaborated with cross-functional teams to deliver 10+ production features',
+      ],
+      achievements: [
+        'Reduced system latency by 40% through optimized data pipeline design',
+        'Improved system reliability to 99.9% uptime through robust error handling',
+        'Led team of 4 developers in successful cloud migration project',
+        'Received "Excellence in Innovation" award for AI-powered fraud detection system',
+      ],
+    },
+    {
+      company: 'DocBot Plus',
+      position: 'Full-Stack Developer',
+      location: 'Remote',
+      range: '2021 - 2022',
+      url: 'https://www.linkedin.com/company/docbotplus/',
+      description: [
+        'Built comprehensive health-tech platform using React, Node.js, and MongoDB',
+        'Developed AI-powered chatbot for patient consultation and symptom analysis',
+        'Implemented real-time video consultation features with WebRTC',
+        'Created automated appointment scheduling and reminder systems',
+        'Integrated with multiple healthcare APIs for seamless data exchange',
+        'Deployed applications on AWS with CI/CD pipeline for continuous delivery',
+      ],
+      achievements: [
+        'Increased user engagement by 60% through improved UI/UX design',
+        'Reduced patient wait times by 50% with automated scheduling system',
+        'Achieved 95% accuracy in AI-powered symptom analysis',
+        'Successfully handled 10K+ concurrent users during peak hours',
+      ],
+    },
+  ];
 
   const [activeTabId, setActiveTabId] = useState(0);
-  const [tabFocus, setTabFocus] = useState(null);
-  const tabs = useRef([]);
   const revealContainer = useRef(null);
+  const revealJobs = useRef([]);
+  const tabs = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -201,106 +227,91 @@ const Jobs = () => {
     }
 
     sr.reveal(revealContainer.current, srConfig());
+    revealJobs.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, []);
 
-  const focusTab = () => {
-    if (tabs.current[tabFocus]) {
-      tabs.current[tabFocus].focus();
-      return;
-    }
-    // If we're at the end, go to the start
-    if (tabFocus >= tabs.current.length) {
-      setTabFocus(0);
-    }
-    // If we're at the start, move to the end
-    if (tabFocus < 0) {
-      setTabFocus(tabs.current.length - 1);
-    }
-  };
-
-  // Only re-run the effect if tabFocus changes
-  useEffect(() => focusTab(), [tabFocus]);
-
-  // Focus on tabs when using up & down arrow keys
   const onKeyDown = e => {
     switch (e.key) {
-      case KEY_CODES.ARROW_UP: {
-        e.preventDefault();
-        setTabFocus(tabFocus - 1);
-        break;
-      }
-
       case KEY_CODES.ARROW_DOWN: {
         e.preventDefault();
-        setTabFocus(tabFocus + 1);
+        setActiveTabId(prev => (prev + 1) % jobsData.length);
         break;
       }
-
-      default: {
+      case KEY_CODES.ARROW_UP: {
+        e.preventDefault();
+        setActiveTabId(prev => (prev - 1 + jobsData.length) % jobsData.length);
         break;
       }
+      default:
+        break;
     }
   };
+
+  const focusTab = () => {
+    if (tabs.current[activeTabId]) {
+      tabs.current[activeTabId].focus();
+    }
+  };
+
+  useEffect(() => focusTab(), [activeTabId]);
 
   return (
     <StyledJobsSection id="jobs" ref={revealContainer}>
-      <h2 className="numbered-heading">Where I’ve Worked</h2>
+      <h2 className="numbered-heading">Where I've Worked</h2>
 
       <div className="inner">
         <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
           {jobsData &&
-            jobsData.map(({ node }, i) => {
-              const { company } = node.frontmatter;
-              return (
-                <StyledTabButton
-                  key={i}
-                  isActive={activeTabId === i}
-                  onClick={() => setActiveTabId(i)}
-                  ref={el => (tabs.current[i] = el)}
-                  id={`tab-${i}`}
-                  role="tab"
-                  tabIndex={activeTabId === i ? '0' : '-1'}
-                  aria-selected={activeTabId === i ? true : false}
-                  aria-controls={`panel-${i}`}>
-                  <span>{company}</span>
-                </StyledTabButton>
-              );
-            })}
+            jobsData.map((job, i) => (
+              <StyledTabButton
+                key={i}
+                isActive={activeTabId === i}
+                onClick={() => setActiveTabId(i)}
+                ref={el => (tabs.current[i] = el)}
+                id={`tab-${i}`}
+                role="tab"
+                tabIndex={activeTabId === i ? '0' : '-1'}
+                aria-selected={activeTabId === i ? true : false}
+                aria-controls={`panel-${i}`}>
+                <span>{job.company}</span>
+              </StyledTabButton>
+            ))}
           <StyledHighlight activeTabId={activeTabId} />
         </StyledTabList>
 
         <StyledTabPanels>
           {jobsData &&
-            jobsData.map(({ node }, i) => {
-              const { frontmatter, html } = node;
-              const { title, url, company, range } = frontmatter;
-
-              return (
-                <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
-                  <StyledTabPanel
-                    id={`panel-${i}`}
-                    role="tabpanel"
-                    tabIndex={activeTabId === i ? '0' : '-1'}
-                    aria-labelledby={`tab-${i}`}
-                    aria-hidden={activeTabId !== i}
-                    hidden={activeTabId !== i}>
-                    <h3>
-                      <span>{title}</span>
-                      <span className="company">
+            jobsData.map((job, i) => (
+              <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
+                <StyledTabPanel
+                  id={`panel-${i}`}
+                  role="tabpanel"
+                  tabIndex={activeTabId === i ? '0' : '-1'}
+                  aria-labelledby={`tab-${i}`}
+                  aria-hidden={activeTabId !== i}
+                  hidden={activeTabId !== i}>
+                  <h3>
+                    <span>{job.position}</span>
+                    <span className="company">
                         &nbsp;@&nbsp;
-                        <a href={url} className="inline-link">
-                          {company}
-                        </a>
-                      </span>
-                    </h3>
+                      <a href={job.url} className="inline-link">
+                        {job.company}
+                      </a>
+                    </span>
+                  </h3>
 
-                    <p className="range">{range}</p>
+                  <p className="range">{job.range}</p>
 
-                    <div dangerouslySetInnerHTML={{ __html: html }} />
-                  </StyledTabPanel>
-                </CSSTransition>
-              );
-            })}
+                  <div>
+                    <ul>
+                      {job.description.map((desc, j) => (
+                        <li key={j}>{desc}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </StyledTabPanel>
+              </CSSTransition>
+            ))}
         </StyledTabPanels>
       </div>
     </StyledJobsSection>

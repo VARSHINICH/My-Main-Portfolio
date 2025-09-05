@@ -17,11 +17,17 @@ const StyledHeader = styled.header`
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-height);
-  background-color: rgba(10, 25, 47, 0.85);
+  background: linear-gradient(
+    135deg,
+    rgba(58, 47, 58, 0.9) 0%,
+    rgba(74, 63, 74, 0.8) 50%,
+    rgba(90, 79, 90, 0.7) 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 165, 165, 0.1);
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
-  backdrop-filter: blur(10px);
   transition: var(--transition);
 
   @media (max-width: 1080px) {
@@ -38,8 +44,14 @@ const StyledHeader = styled.header`
       css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
-        background-color: rgba(10, 25, 47, 0.85);
-        box-shadow: 0 10px 30px -10px var(--navy-shadow);
+        background: linear-gradient(
+          135deg,
+          rgba(58, 47, 58, 0.95) 0%,
+          rgba(74, 63, 74, 0.9) 50%,
+          rgba(90, 79, 90, 0.85) 100%
+        );
+        box-shadow: 0 10px 30px -10px var(--pink-shadow);
+        border-bottom: 1px solid rgba(255, 165, 165, 0.2);
       `};
 
     ${props =>
@@ -48,7 +60,7 @@ const StyledHeader = styled.header`
       css`
         height: var(--nav-scroll-height);
         transform: translateY(calc(var(--nav-scroll-height) * -1));
-        box-shadow: 0 10px 30px -10px var(--navy-shadow);
+        box-shadow: 0 10px 30px -10px var(--pink-shadow);
       `};
   }
 `;
@@ -66,14 +78,14 @@ const StyledNav = styled.nav`
     ${({ theme }) => theme.mixins.flexCenter};
 
     a {
-      color: var(--green);
+      color: var(--pink);
       width: 42px;
       height: 42px;
 
       &:hover,
       &:focus {
         svg {
-          fill: var(--green-tint);
+          fill: var(--pink-tint);
         }
       }
 
@@ -108,13 +120,42 @@ const StyledLinks = styled.div`
 
       a {
         padding: 10px;
+        position: relative;
+        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
         &:before {
           content: '0' counter(item) '.';
           margin-right: 5px;
-          color: var(--green);
+          color: var(--pink);
           font-size: var(--fz-xxs);
           text-align: right;
+          transition: all 0.3s ease;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0;
+          height: 2px;
+          background: linear-gradient(90deg, var(--pink), var(--coral));
+          transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+          transform: translateX(-50%);
+        }
+
+        &:hover {
+          color: var(--pink);
+          transform: translateY(-2px);
+
+          &:after {
+            width: 100%;
+          }
+
+          &:before {
+            color: var(--coral);
+            transform: scale(1.1);
+          }
         }
       }
     }
@@ -124,6 +165,23 @@ const StyledLinks = styled.div`
     ${({ theme }) => theme.mixins.smallButton};
     margin-left: 15px;
     font-size: var(--fz-xs);
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    &:hover:before {
+      left: 100%;
+    }
   }
 `;
 

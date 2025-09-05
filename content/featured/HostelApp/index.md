@@ -1,14 +1,15 @@
 ---
-date: '2'
-title: 'Hostel Management'
+date: '2024-02-01'
+title: 'Hostel Management System'
 cover: './hostelApp1.png'
 github: 'https://github.com/VARSHINICH/HostelApp'
 external: 'https://hostella.com/'
 tech:
   - Angular
-  - Nodejs
-  - HTML
-  - Mongodb
+  - Node.js
+  - MongoDB
+  - Express.js
+  - REST APIs
 ---
 
-Built a Hostel Management Web App using Angular, Node.js, and MongoDB to streamline room allocation, student records, and admin workflows.
+Built a comprehensive Hostel Management Web Application using Angular frontend and Node.js backend with MongoDB database. Streamlined room allocation, student records management, and admin workflows with real-time updates and responsive design.
