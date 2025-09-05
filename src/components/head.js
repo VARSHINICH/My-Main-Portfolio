@@ -25,13 +25,8 @@ const Head = ({ title, description, image }) => {
     `,
   );
 
-  const {
-    defaultTitle,
-    defaultDescription,
-    siteUrl,
-    defaultImage,
-    twitterUsername,
-  } = site.siteMetadata;
+  const { defaultTitle, defaultDescription, siteUrl, defaultImage, twitterUsername } =
+    site.siteMetadata;
 
   const seo = {
     title: title || defaultTitle,
@@ -43,6 +38,11 @@ const Head = ({ title, description, image }) => {
   return (
     <Helmet title={title} defaultTitle={seo.title} titleTemplate={`%s | ${defaultTitle}`}>
       <html lang="en" />
+
+      {/* Favicon */}
+      <link rel="icon" type="image/png" href="/favicon.png" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <link rel="apple-touch-icon" href="/favicon.png" />
 
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
