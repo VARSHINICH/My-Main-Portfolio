@@ -7,17 +7,17 @@ import { Icon } from '@components/icons';
 
 const StyledContactSection = styled.section`
   max-width: 600px;
-  margin: 0 auto 100px;
+  margin: 100px auto 100px;
   text-align: center;
   padding: 0 20px;
 
   @media (max-width: 768px) {
-    margin: 0 auto 50px;
+    margin: 80px auto 50px;
     padding: 0 15px;
   }
 
   @media (max-width: 480px) {
-    margin: 0 auto 30px;
+    margin: 60px auto 30px;
     padding: 0 10px;
   }
 
