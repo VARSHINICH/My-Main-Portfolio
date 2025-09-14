@@ -1,12 +1,12 @@
 {
-  "homepage": "https://github.com/VARSHINICH/porfolio",
+  "homepage": "https://VARSHINICH.github.io/My-Main-Portfolio",
   "name": "v4",
   "description": "Personal Website of Varshini Challagundla",
   "version": "1.0.0",
   "author": "Varshini Challagundla <varshinichallagundla123@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/VARSHINICH/porfolio"
+    "url": "https://github.com/VARSHINICH/My-Main-Portfolio"
   },
   "keywords": [
     "gatsby"
@@ -23,7 +23,7 @@
     "prepare": "husky install",
     "lint-staged": "lint-staged",
     "predeploy": "gatsby build",
-    "deploy": "npm gh-pages -d public"
+    "deploy": "gh-pages -d public"
   },
   "lint-staged": {
     "*.{js,css,json,md}": [
@@ -74,6 +74,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.23.2",
     "gatsby-remark-code-titles": "^1.1.0",
+    "gh-pages": "^6.3.0",
     "husky": "^6.0.0",
     "lint-staged": "^10.1.2",
     "prettier": "^2.2.1"
