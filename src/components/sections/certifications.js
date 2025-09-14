@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const StyledCertificationsSection = styled.section`
   max-width: 1000px;
@@ -33,7 +34,7 @@ const StyledCertificationsSection = styled.section`
     margin-bottom: 20px;
     text-align: center;
     color: var(--lightest-slate);
-    
+
     @media (max-width: 1024px) {
       margin-bottom: 18px;
     }
@@ -50,7 +51,7 @@ const StyledCertificationsSection = styled.section`
   .certifications-intro {
     text-align: center;
     margin-bottom: 60px;
-    
+
     p {
       font-size: clamp(16px, 2vw, 18px);
       line-height: 1.6;
@@ -115,7 +116,7 @@ const StyledCertificationsSection = styled.section`
 
     &:hover {
       transform: translateY(-5px);
-      
+
       .certification-logo {
         transform: scale(1.1);
         color: var(--pink);
@@ -145,10 +146,9 @@ const StyledCertificationsSection = styled.section`
         margin-bottom: 8px;
       }
 
-      img {
+      .gatsby-image-wrapper {
         width: 120px;
         height: 120px;
-        object-fit: contain;
 
         @media (max-width: 1024px) {
           width: 110px;
@@ -243,19 +243,56 @@ const Certifications = () => {
 
   const certifications = data.certifications.edges.filter(({ node }) => node);
 
-  const getCertificationImage = (title) => {
-    if (title.toLowerCase().includes('aws')) return '/images/aws-logo.png';
-    if (title.toLowerCase().includes('google') || title.toLowerCase().includes('data analytics')) return '/images/gcp-logo.png';
-    if (title.toLowerCase().includes('terraform') || title.toLowerCase().includes('hashicorp')) return '/images/terraform-logo.png';
-    return '/images/certificate-icon.png';
+  const getCertificationImage = title => {
+    if (title.toLowerCase().includes('aws')) {
+      return (
+        <StaticImage
+          src="../../images/aws-logo.png"
+          alt="AWS Logo"
+          width={120}
+          height={120}
+          placeholder="blurred"
+        />
+      );
+    }
+    if (title.toLowerCase().includes('google') || title.toLowerCase().includes('data analytics')) {
+      return (
+        <StaticImage
+          src="../../images/gcp-logo.png"
+          alt="GCP Logo"
+          width={120}
+          height={120}
+          placeholder="blurred"
+        />
+      );
+    }
+    if (title.toLowerCase().includes('terraform') || title.toLowerCase().includes('hashicorp')) {
+      return (
+        <StaticImage
+          src="../../images/terraform-logo.png"
+          alt="Terraform Logo"
+          width={120}
+          height={120}
+          placeholder="blurred"
+        />
+      );
+    }
+    return (
+      <StaticImage
+        src="../../images/certificate-icon.png"
+        alt="Certificate Icon"
+        width={120}
+        height={120}
+        placeholder="blurred"
+      />
+    );
   };
 
   return (
     <StyledCertificationsSection id="certifications">
       <h2 ref={revealTitle}>Certifications</h2>
-      
-      <div className="certifications-intro" ref={revealIntro}>
-      </div>
+
+      <div className="certifications-intro" ref={revealIntro}></div>
 
       <div className="certifications-grid">
         {certifications.map(({ node }, i) => {
@@ -268,21 +305,13 @@ const Certifications = () => {
               className="certification-item"
               ref={el => (revealCertifications.current[i] = el)}>
               {external ? (
-                <a 
-                  href={external} 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="certification-link">
-                  <div className="certification-logo">
-                    <img src={getCertificationImage(title)} alt={`${title} logo`} />
-                  </div>
+                <a href={external} target="_blank" rel="noreferrer" className="certification-link">
+                  <div className="certification-logo">{getCertificationImage(title)}</div>
                   <h3 className="certification-title">{title}</h3>
                 </a>
               ) : (
                 <>
-                  <div className="certification-logo">
-                    <img src={getCertificationImage(title)} alt={`${title} logo`} />
-                  </div>
+                  <div className="certification-logo">{getCertificationImage(title)}</div>
                   <h3 className="certification-title">{title}</h3>
                 </>
               )}
