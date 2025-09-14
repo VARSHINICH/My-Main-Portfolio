@@ -271,10 +271,8 @@ const StyledProject = styled.li`
         background: transparent;
         outline: 0;
 
-        &:before,
-        .img {
+        &:before {
           background: transparent;
-          filter: none;
         }
 
         @media (max-width: 768px) {
@@ -304,15 +302,12 @@ const StyledProject = styled.li`
 
     .img {
       border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1) brightness(90%);
+      transition: var(--transition);
 
       @media (max-width: 768px) {
         object-fit: cover;
         width: auto;
         height: 100%;
-        filter: grayscale(100%) contrast(1) brightness(50%);
-        mix-blend-mode: normal; /* Remove blend mode on mobile */
       }
     }
   }

@@ -132,16 +132,13 @@ const StyledPic = styled.div`
       }
 
       .img {
-        filter: none;
-        mix-blend-mode: normal;
+        transition: var(--transition);
       }
     }
 
     .img {
       position: relative;
       border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1);
       transition: var(--transition);
     }
 
@@ -205,7 +202,6 @@ const About = () => {
     'CI/CD & DevOps',
   ];
 
-
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
       <h2 className="numbered-heading">About Me</h2>
@@ -214,15 +210,25 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              I'm a developer passionate about crafting accessible, scalable applications that blend thoughtful design with robust engineering. My favorite work lies at the intersection of design and development, creating experiences that not only look great but are meticulously built for performance and usability.
+              I'm a developer passionate about crafting accessible, scalable applications that blend
+              thoughtful design with robust engineering. My favorite work lies at the intersection
+              of design and development, creating experiences that not only look great but are
+              meticulously built for performance and usability.
             </p>
 
             <p>
-              Currently, I'm a <strong>Software Engineer at JPMorgan Chase</strong>, specializing in full-stack development and cloud architecture. I contribute to the creation and maintenance of critical systems that power financial services, ensuring our platform meets high performance standards and best practices to deliver exceptional user experiences.
+              Currently, I'm a <strong>Software Engineer at JPMorgan Chase</strong>, specializing in
+              full-stack development and cloud architecture. I contribute to the creation and
+              maintenance of critical systems that power financial services, ensuring our platform
+              meets high performance standards and best practices to deliver exceptional user
+              experiences.
             </p>
 
             <p>
-              In the past, I've had the opportunity to develop software across a variety of settings — from health-tech startups to large financial corporations. Additionally, I also work on personal projects and contribute to open-source communities, sharing knowledge and learning from fellow developers.
+              In the past, I've had the opportunity to develop software across a variety of settings
+              — from health-tech startups to large financial corporations. Additionally, I also work
+              on personal projects and contribute to open-source communities, sharing knowledge and
+              learning from fellow developers.
             </p>
 
             <p>

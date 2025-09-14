@@ -313,10 +313,8 @@ const StyledProject = styled.li`
         background: transparent;
         outline: 0;
 
-        &:before,
-        .img {
+        &:before {
           background: transparent;
-          filter: none;
         }
 
         @media (max-width: 768px) {
@@ -346,15 +344,12 @@ const StyledProject = styled.li`
 
     .img {
       border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1) brightness(90%);
+      transition: var(--transition);
 
       @media (max-width: 768px) {
         object-fit: cover;
         width: auto;
         height: 100%;
-        filter: grayscale(100%) contrast(1) brightness(50%);
-        mix-blend-mode: normal;
       }
     }
   }
@@ -362,7 +357,7 @@ const StyledProject = styled.li`
 
 const Projects = () => {
   const [showAll, setShowAll] = useState(false);
-  
+
   const data = useStaticQuery(graphql`
     query {
       projects: allMarkdownRemark(
@@ -397,7 +392,7 @@ const Projects = () => {
   const initialProjects = projects.slice(0, 3);
   const remainingProjects = projects.slice(3);
   const displayedProjects = showAll ? projects : initialProjects;
-  
+
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
   const revealButton = useRef(null);
@@ -434,9 +429,7 @@ const Projects = () => {
                   <div>
                     <p className="project-overline">Featured Project</p>
 
-                    <h3 className="project-title">
-                      {title}
-                    </h3>
+                    <h3 className="project-title">{title}</h3>
 
                     <div
                       className="project-description"
@@ -504,17 +497,16 @@ const Projects = () => {
               textTransform: 'uppercase',
               letterSpacing: '1px',
             }}
-            onMouseEnter={(e) => {
+            onMouseEnter={e => {
               e.target.style.background = 'var(--pink)';
               e.target.style.color = 'var(--dark-navy)';
               e.target.style.transform = 'translateY(-2px)';
             }}
-            onMouseLeave={(e) => {
+            onMouseLeave={e => {
               e.target.style.background = 'transparent';
               e.target.style.color = 'var(--pink)';
               e.target.style.transform = 'translateY(0)';
-            }}
-          >
+            }}>
             {showAll ? 'Show Less' : `Show More (${remainingProjects.length})`}
           </button>
         </div>
@@ -524,4 +516,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
