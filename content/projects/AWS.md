@@ -1,11 +1,13 @@
 ---
 date: '2023-06-01'
-title: 'AWS Cloud Practioner Certificate'
-github: ''
-external: ''
+title: 'AWS Certified Cloud Practitioner'
+external: 'https://www.credly.com/org/amazon-web-services/badge/aws-certified-cloud-practitioner'
 tech:
   - AWS Cloud
-showInProjects: true
+  - Cloud Computing
+  - Cloud Services
+showInProjects: false
+isCertification: true
 ---
 
-Amazon Web Services Cloud Practitioner Certification
+AWS Certified Cloud Practitioner - Foundational level certification demonstrating fundamental understanding of IT services and their uses in the AWS Cloud.

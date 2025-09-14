@@ -22,17 +22,9 @@ const StyledLoader = styled.div`
     max-width: 100px;
     transition: var(--transition);
     opacity: ${props => (props.isMounted ? 1 : 0)};
-    svg {
-      display: block;
-      width: 100%;
-      height: 100%;
-      margin: 0 auto;
-      fill: none;
-      user-select: none;
-      #B {
-        opacity: 0;
-      }
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -46,20 +38,15 @@ const Loader = ({ finishLoading }) => {
 
     loader
       .add({
-        targets: '#logo path',
+        targets: '.logo-wrapper',
         delay: 300,
-        duration: 1500,
+        duration: 800,
         easing: 'easeInOutQuart',
-        strokeDashoffset: [anime.setDashoffset, 0],
+        scale: [0.5, 1],
+        opacity: [0, 1],
       })
       .add({
-        targets: '#logo #V',
-        duration: 700,
-        easing: 'easeInOutQuart',
-        opacity: 1,
-      })
-      .add({
-        targets: '#logo',
+        targets: '.logo-wrapper',
         delay: 500,
         duration: 300,
         easing: 'easeInOutQuart',

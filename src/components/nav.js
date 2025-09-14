@@ -4,10 +4,8 @@ import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled, { css } from 'styled-components';
 import { navLinks } from '@config';
-import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
-import { IconLogo } from '@components/icons';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -234,29 +232,12 @@ const Nav = ({ isHome }) => {
     };
   }, []);
 
-  const timeout = isHome ? loaderDelay : 0;
+  const timeout = 0;
   const fadeClass = isHome ? 'fade' : '';
   const fadeDownClass = isHome ? 'fadedown' : '';
 
-  const Logo = (
-    <div className="logo" tabIndex="-1">
-      {isHome ? (
-        <a href="/" aria-label="home">
-          <IconLogo />
-        </a>
-      ) : (
-        <Link to="/" aria-label="home">
-          <IconLogo />
-        </Link>
-      )}
-    </div>
-  );
-
-  const ResumeLink = (
-    <a className="resume-button" href="/resume2.pdf" target="_blank" rel="noopener noreferrer">
-      Resume
-    </a>
-  );
+  const Logo = null;
+  const ResumeLink = null;
 
   return (
     <StyledHeader scrollDirection={scrollDirection} scrolledToTop={scrolledToTop}>

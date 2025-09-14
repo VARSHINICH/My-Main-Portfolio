@@ -1,14 +1,16 @@
 ---
-date: '1'
-title: 'Chase Rewards'
-cover: './app.png'
-github: 'https://github.com/VARSHINICH/chase-rewards-app'
+date: '2024-03-01'
+title: 'Chase Rewards App'
+cover: '../featured/RewardsApp/app.png'
+github: ''
 external: ''
 tech:
-  - VS Code
   - ReactJS
   - Java
   - SpringBoot
+  - VS Code
+showInProjects: true
 ---
 
 Built and deployed a dynamic Rewards Web App using React and Spring Boot, approved for production by JPMC leadership.
+

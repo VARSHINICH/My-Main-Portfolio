@@ -205,21 +205,6 @@ const About = () => {
     'CI/CD & DevOps',
   ];
 
-  const achievements = [
-    'Built real-time notification services handling 1M+ messages/day at JPMorgan Chase',
-    'Designed low-latency data pipelines reducing processing time by 40%',
-    'Led migration of legacy systems to cloud-native architecture',
-    'Mentored 5+ junior developers and conducted 50+ technical interviews',
-    'Contributed to open-source projects with 500+ GitHub stars',
-    'Delivered 15+ production-ready applications with 99.9% uptime',
-  ];
-
-  const certifications = [
-    'AWS Certified Solutions Architect',
-    'Google Cloud Professional Developer',
-    'Certified Kubernetes Administrator',
-    'Oracle Java SE 11 Developer',
-  ];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -229,18 +214,15 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! I'm <strong>Varshini Challagundla</strong>, a passionate software engineer who
-              loves building things that make a difference. My journey in technology started back in
-              2015 when I began customizing website themes—little did I know, this would spark a
-              lifelong passion for coding, problem-solving, and creating powerful applications.
+              I'm a developer passionate about crafting accessible, scalable applications that blend thoughtful design with robust engineering. My favorite work lies at the intersection of design and development, creating experiences that not only look great but are meticulously built for performance and usability.
             </p>
 
             <p>
-              Today, I'm proud to be a <strong>Software Engineer at JPMorgan Chase</strong>, one of
-              the world's leading financial institutions. I've had the privilege of working on
-              mission-critical systems that serve millions of customers, from designing low-latency
-              data pipelines to building real-time notification services using cutting-edge
-              technologies like Kafka, AWS, and microservices architecture.
+              Currently, I'm a <strong>Software Engineer at JPMorgan Chase</strong>, specializing in full-stack development and cloud architecture. I contribute to the creation and maintenance of critical systems that power financial services, ensuring our platform meets high performance standards and best practices to deliver exceptional user experiences.
+            </p>
+
+            <p>
+              In the past, I've had the opportunity to develop software across a variety of settings — from health-tech startups to large financial corporations. Additionally, I also work on personal projects and contribute to open-source communities, sharing knowledge and learning from fellow developers.
             </p>
 
             <p>
@@ -255,30 +237,6 @@ const About = () => {
           <ul className="skills-list">
             {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
           </ul>
-
-          <div style={{ marginTop: '2rem' }}>
-            <h4 style={{ color: 'var(--pink)', marginBottom: '1rem' }}>Key Achievements:</h4>
-            <ul className="skills-list">
-              {achievements &&
-                achievements.map((achievement, i) => (
-                  <li key={i} style={{ fontSize: 'var(--fz-sm)', lineHeight: '1.6' }}>
-                    {achievement}
-                  </li>
-                ))}
-            </ul>
-          </div>
-
-          <div style={{ marginTop: '2rem' }}>
-            <h4 style={{ color: 'var(--pink)', marginBottom: '1rem' }}>Certifications:</h4>
-            <ul className="skills-list">
-              {certifications &&
-                certifications.map((cert, i) => (
-                  <li key={i} style={{ fontSize: 'var(--fz-sm)', lineHeight: '1.6' }}>
-                    {cert}
-                  </li>
-                ))}
-            </ul>
-          </div>
         </StyledText>
 
         <StyledPic>

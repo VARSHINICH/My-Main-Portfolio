@@ -1,15 +1,16 @@
 ---
-date: '4'
+date: '2024-04-01'
 title: 'Smart OCR'
-cover: './ML.jpg'
-github: 'https://github.com/VARSHINICH/smart-ocr'
+cover: '../featured/ML2/ML.jpg'
+github: ''
 external: ''
-cta: ''
 tech:
   - Python
   - OCR
   - OpenCV
   - ML Model
+showInProjects: true
 ---
 
 Developed an end-to-end system for natural scene text understanding using machine learning. Combined computer vision and OCR techniques to detect, extract, and interpret text from real-world images with high accuracy.
+
