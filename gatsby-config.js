@@ -18,7 +18,7 @@ module.exports = {
       options: {
         defaults: {
           formats: [`auto`, `webp`, `png`, `jpg`], // ✅ AVIF removed
-          quality: 90,
+          quality: 100,
         },
       },
     },
@@ -81,9 +81,8 @@ module.exports = {
             options: {
               maxWidth: 700,
               linkImagesToOriginal: true,
-              quality: 90,
+              quality: 100,
               withAvif: false, // ✅ explicitly disable AVIF here too
-              tracedSVG: { color: config.colors.green },
             },
           },
           {
