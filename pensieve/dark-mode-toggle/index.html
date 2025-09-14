@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 3.15.0"/><title data-react-helmet="true">Dark Mode Toggle | Varshini Challagundla</title><link data-react-helmet="true" rel="icon" type="image/png" href="/favicon.png"/><link data-react-helmet="true" rel="icon" type="image/svg+xml" href="/favicon.svg"/><link data-react-helmet="true" rel="apple-touch-icon" href="/favicon.png"/><meta data-react-helmet="true" name="description" content="Varshini Challagundla is a Software Engineer specializing in full-stack development, cloud technologies, and scalable system design."/><meta data-react-helmet="true" name="image" content="https://varshinichallagundla.com/og.png"/><meta data-react-helmet="true" property="og:title" content="Varshini Challagundla"/><meta data-react-helmet="true" property="og:description" content="Varshini Challagundla is a Software Engineer specializing in full-stack development, cloud technologies, and scalable system design."/><meta data-react-helmet="true" property="og:image" content="https://varshinichallagundla.com/og.png"/><meta data-react-helmet="true" property="og:url" content="https://varshinichallagundla.com/pensieve/dark-mode-toggle"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"/><meta data-react-helmet="true" name="twitter:creator" content=""/><meta data-react-helmet="true" name="twitter:title" content="Varshini Challagundla"/><meta data-react-helmet="true" name="twitter:description" content="Varshini Challagundla is a Software Engineer specializing in full-stack development, cloud technologies, and scalable system design."/><meta data-react-helmet="true" name="twitter:image" content="https://varshinichallagundla.com/og.png"/><meta data-react-helmet="true" name="google-site-verification" content="DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk"/><style data-styled="" data-styled-version="5.3.11">@font-face{font-family:'Calibre';src:url(/static/Calibre-Regular-b0d4cbb1201155ddccc21d1b8059a670.woff2) format('woff2'), url(/static/Calibre-Regular-98526589fa32315c552129869e08427e.woff) format('woff');font-weight:400;font-style:normal;font-display:auto;}/*!sc*/
+@font-face{font-family:'Calibre';src:url(/static/Calibre-Medium-568dce56f869a519a015d3b69443b067.woff2) format('woff2'), url(/static/Calibre-Medium-46693d9b57a6b8a657b5393258f6e899.woff) format('woff');font-weight:500;font-style:normal;font-display:auto;}/*!sc*/
+@font-face{font-family:'Calibre';src:url(/static/Calibre-Semibold-94fc73852539d6733dc0d80252c5e3fb.woff2) format('woff2'), url(/static/Calibre-Semibold-6972688a249bd53a6c7e69a89e50cdd6.woff) format('woff');font-weight:600;font-style:normal;font-display:auto;}/*!sc*/
+@font-face{font-family:'Calibre';src:url(/static/Calibre-RegularItalic-5f875bd7b669f1e11b622d4d6d71b5b0.woff2) format('woff2'), url(/static/Calibre-RegularItalic-57371b9e514dbbe9da31dad1a298de2d.woff) format('woff');font-weight:400;font-style:italic;font-display:auto;}/*!sc*/
+@font-face{font-family:'Calibre';src:url(/static/Calibre-MediumItalic-7aa140573fd9ed30ae01e117c418b12b.woff2) format('woff2'), url(/static/Calibre-MediumItalic-aa285f95879aa2c2d26b228d5e422da6.woff) format('woff');font-weight:500;font-style:italic;font-display:auto;}/*!sc*/
+@font-face{font-family:'Calibre';src:url(/static/Calibre-SemiboldItalic-5f04bffe7ce988169806d66e417a966a.woff2) format('woff2'), url(/static/Calibre-SemiboldItalic-ad4bd95abee7bca1bdd6a93398f84a04.woff) format('woff');font-weight:600;font-style:italic;font-display:auto;}/*!sc*/
+@font-face{font-family:'SF Mono';src:url(/static/SFMono-Regular-8799e6387338d58f2f137df821c86eb4.woff2) format('woff2'), url(/static/SFMono-Regular-e36fa5257c93fc7711eae342068f9eda.woff) format('woff');font-weight:400;font-style:normal;font-display:auto;}/*!sc*/
+@font-face{font-family:'SF Mono';src:url(/static/SFMono-Semibold-6e6f6c93f4bdf9cbd090c60e97a017e2.woff2) format('woff2'), url(/static/SFMono-Semibold-ee054046915420413d0068fb1e7105c3.woff) format('woff');font-weight:600;font-style:normal;font-display:auto;}/*!sc*/
+@font-face{font-family:'SF Mono';src:url(/static/SFMono-RegularItalic-a596917f86217b40000ff1b894cd0e52.woff2) format('woff2'), url(/static/SFMono-RegularItalic-3a20a00dfdeb4ba538473fa7bf625cbd.woff) format('woff');font-weight:400;font-style:italic;font-display:auto;}/*!sc*/
+@font-face{font-family:'SF Mono';src:url(/static/SFMono-SemiboldItalic-9a0ae6382e12c5e28a7342ffb41cf4da.woff2) format('woff2'), url(/static/SFMono-SemiboldItalic-10eb596e904940cd1aebb2cc6286015c.woff) format('woff');font-weight:600;font-style:italic;font-display:auto;}/*!sc*/
+:root{--pink-darkest:#d67a7a;--pink-darker:#e68a8a;--pink-dark:#f09595;--pink:#ffa5a5;--pink-light:#ffb5b5;--pink-lighter:#ffc5c5;--pink-lightest:#ffd5d5;--pink-tint:rgba(255,165,165,0.1);--pink-shadow:rgba(255,165,165,0.3);--coral-light:#ffb5c5;--coral-dark:#e68a9a;--coral-lighter:#ffc5d5;--coral-tint:rgba(255,181,197,0.1);--coral:#ffa5b5;--peach:#ffb5a5;--rose:#ffa5d6;--lavender:#d6a5ff;--sky:#a5d6ff;--peach-light:#ffb5a5;--dark-navy:#2a1f2a;--navy:#3a2f3a;--light-navy:#4a3f4a;--lightest-navy:#5a4f5a;--navy-shadow:rgba(42,31,42,0.7);--dark-slate:#8a7f8a;--slate:#aa9faa;--light-slate:#cabfca;--lightest-slate:#eadfea;--white:#faf5f5;--coral-accent:#ffa5b5;--coral-accent-dark:#e67a8a;--coral-accent-tint:rgba(255,165,181,0.1);--blue:#a5d6ff;--blue-dark:#7ab8e6;--blue-tint:rgba(165,214,255,0.1);--purple:#d6a5ff;--purple-dark:#b87ae6;--purple-tint:rgba(214,165,255,0.1);--yellow:#ffe6a5;--yellow-dark:#e6c77a;--yellow-tint:rgba(255,230,165,0.1);--font-sans:'Calibre','Inter','San Francisco','SF Pro Text',-apple-system,system-ui,sans-serif;--font-mono:'SF Mono','Fira Code','Fira Mono','Roboto Mono',monospace;--fz-xxs:12px;--fz-xs:13px;--fz-sm:14px;--fz-md:16px;--fz-lg:18px;--fz-xl:20px;--fz-xxl:22px;--fz-heading:32px;--border-radius:4px;--nav-height:100px;--nav-scroll-height:70px;--tab-height:42px;--tab-width:120px;--easing:cubic-bezier(0.645,0.045,0.355,1);--transition:all 0.25s cubic-bezier(0.645,0.045,0.355,1);--hamburger-width:30px;--ham-before:top 0.1s ease-in 0.25s,opacity 0.1s ease-in;--ham-before-active:top 0.1s ease-out,opacity 0.1s ease-out 0.12s;--ham-after:bottom 0.1s ease-in 0.25s,transform 0.22s cubic-bezier(0.55,0.055,0.675,0.19);--ham-after-active:bottom 0.1s ease-out,transform 0.22s cubic-bezier(0.215,0.61,0.355,1) 0.12s;--gradient-primary:linear-gradient(135deg,var(--pink),var(--coral));--gradient-secondary:linear-gradient(135deg,var(--coral-light),var(--peach-light));--gradient-accent:linear-gradient(135deg,var(--lavender),var(--sky));--gradient-bg:linear-gradient(135deg,var(--navy),var(--light-navy));--gradient-text:linear-gradient(135deg,var(--lightest-slate),var(--pink));--shadow-pink:0 10px 30px rgba(255,165,165,0.3);--shadow-coral:0 10px 30px rgba(255,165,181,0.3);--shadow-coral-light:0 10px 30px rgba(255,181,197,0.3);--shadow-lavender:0 10px 30px rgba(214,165,255,0.3);}/*!sc*/
+html{box-sizing:border-box;width:100%;-webkit-scroll-behavior:smooth;-moz-scroll-behavior:smooth;-ms-scroll-behavior:smooth;scroll-behavior:smooth;}/*!sc*/
+*,*:before,*:after{box-sizing:inherit;}/*!sc*/
+::selection{background-color:var(--lightest-navy);color:var(--lightest-slate);}/*!sc*/
+:focus{outline:2px dashed var(--pink);outline-offset:3px;}/*!sc*/
+:focus:not(:focus-visible){outline:none;outline-offset:0px;}/*!sc*/
+:focus-visible{outline:2px dashed var(--pink);outline-offset:3px;}/*!sc*/
+html{-webkit-scrollbar-width:thin;-moz-scrollbar-width:thin;-ms-scrollbar-width:thin;scrollbar-width:thin;-webkit-scrollbar-color:var(--dark-slate) var(--navy);-moz-scrollbar-color:var(--dark-slate) var(--navy);-ms-scrollbar-color:var(--dark-slate) var(--navy);scrollbar-color:var(--dark-slate) var(--navy);}/*!sc*/
+::-webkit-scrollbar{width:12px;}/*!sc*/
+::-webkit-scrollbar-track{background:var(--navy);}/*!sc*/
+::-webkit-scrollbar-thumb{background-color:var(--dark-slate);border:3px solid var(--navy);border-radius:10px;}/*!sc*/
+body{margin:0;width:100%;min-height:100%;overflow-x:hidden;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;background-color:var(--navy);color:var(--slate);font-family:var(--font-sans);font-size:var(--fz-xl);line-height:1.3;}/*!sc*/
+@media (max-width:480px){body{font-size:var(--fz-lg);}}/*!sc*/
+body.hidden{overflow:hidden;}/*!sc*/
+body.blur{overflow:hidden;}/*!sc*/
+body.blur header{background-color:transparent;}/*!sc*/
+body.blur #content > *{-webkit-filter:blur(5px) brightness(0.7);filter:blur(5px) brightness(0.7);-webkit-transition:var(--transition);transition:var(--transition);pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}/*!sc*/
+#root{min-height:100vh;display:grid;grid-template-rows:1fr auto;grid-template-columns:100%;}/*!sc*/
+main{margin:0 auto;width:100%;max-width:1600px;min-height:100vh;padding:200px 150px;}/*!sc*/
+@media (max-width:1080px){main{padding:200px 100px;}}/*!sc*/
+@media (max-width:768px){main{padding:150px 50px;}}/*!sc*/
+@media (max-width:480px){main{padding:125px 25px;padding-top:100px;}}/*!sc*/
+main.fillHeight{padding:0 150px;}/*!sc*/
+@media (max-width:1080px){main.fillHeight{padding:0 100px;}}/*!sc*/
+@media (max-width:768px){main.fillHeight{padding:0 50px;}}/*!sc*/
+@media (max-width:480px){main.fillHeight{padding:0 25px;}}/*!sc*/
+section{margin:0 auto;padding:100px 0;max-width:1000px;}/*!sc*/
+@media (max-width:768px){section{padding:80px 0;}}/*!sc*/
+@media (max-width:480px){section{padding:60px 0;}}/*!sc*/
+h1,h2,h3,h4,h5,h6{margin:0 0 10px 0;font-weight:600;color:var(--lightest-slate);line-height:1.1;}/*!sc*/
+.big-heading{margin:0;font-size:clamp(40px,8vw,80px);}/*!sc*/
+.medium-heading{margin:0;font-size:clamp(40px,8vw,60px);}/*!sc*/
+.numbered-heading{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;margin:10px 0 40px;width:100%;font-size:clamp(26px,5vw,var(--fz-heading));white-space:nowrap;}/*!sc*/
+.numbered-heading:before{position:relative;bottom:4px;counter-increment:section;content:'0' counter(section) '.';margin-right:10px;color:var(--pink);font-family:var(--font-mono);font-size:clamp(var(--fz-md),3vw,var(--fz-xl));font-weight:400;}/*!sc*/
+@media (max-width:480px){.numbered-heading:before{margin-bottom:-3px;margin-right:5px;}}/*!sc*/
+.numbered-heading:after{content:'';display:block;position:relative;top:-5px;width:300px;height:1px;margin-left:20px;background-color:var(--lightest-navy);}/*!sc*/
+@media (max-width:1080px){.numbered-heading:after{width:200px;}}/*!sc*/
+@media (max-width:768px){.numbered-heading:after{width:100%;}}/*!sc*/
+@media (max-width:600px){.numbered-heading:after{margin-left:10px;}}/*!sc*/
+img,svg,.gatsby-image-wrapper{width:100%;max-width:100%;vertical-align:middle;}/*!sc*/
+img[alt=""],img:not([alt]){-webkit-filter:blur(5px);filter:blur(5px);}/*!sc*/
+svg{width:100%;height:100%;fill:currentColor;vertical-align:middle;}/*!sc*/
+svg.feather{fill:none;}/*!sc*/
+a{display:inline-block;-webkit-text-decoration:none;text-decoration:none;-webkit-text-decoration-skip-ink:auto;text-decoration-skip-ink:auto;color:inherit;position:relative;-webkit-transition:var(--transition);transition:var(--transition);}/*!sc*/
+a:hover,a:focus{color:var(--pink);}/*!sc*/
+a.inline-link{display:inline-block;-webkit-text-decoration:none;text-decoration:none;-webkit-text-decoration-skip-ink:auto;text-decoration-skip-ink:auto;position:relative;-webkit-transition:var(--transition);transition:var(--transition);color:var(--pink);}/*!sc*/
+a.inline-link:hover,a.inline-link:focus,a.inline-link:active{color:var(--pink);outline:0;}/*!sc*/
+a.inline-link:hover:after,a.inline-link:focus:after,a.inline-link:active:after{width:100%;}/*!sc*/
+a.inline-link:hover > *,a.inline-link:focus > *,a.inline-link:active > *{color:var(--pink) !important;-webkit-transition:var(--transition);transition:var(--transition);}/*!sc*/
+a.inline-link:after{content:'';display:block;width:0;height:1px;position:relative;bottom:0.37em;background-color:var(--pink);-webkit-transition:var(--transition);transition:var(--transition);opacity:0.5;}/*!sc*/
+button{cursor:pointer;border:0;border-radius:0;}/*!sc*/
+input,textarea{border-radius:0;outline:0;}/*!sc*/
+input:focus,textarea:focus{outline:0;}/*!sc*/
+input:focus::-webkit-input-placeholder,textarea:focus::-webkit-input-placeholder,input:active::-webkit-input-placeholder,textarea:active::-webkit-input-placeholder{opacity:0.5;}/*!sc*/
+input:focus::-moz-placeholder,textarea:focus::-moz-placeholder,input:active::-moz-placeholder,textarea:active::-moz-placeholder{opacity:0.5;}/*!sc*/
+input:focus:-ms-input-placeholder,textarea:focus:-ms-input-placeholder,input:active:-ms-input-placeholder,textarea:active:-ms-input-placeholder{opacity:0.5;}/*!sc*/
+input:focus::placeholder,textarea:focus::placeholder,input:active::placeholder,textarea:active::placeholder{opacity:0.5;}/*!sc*/
+p{margin:0 0 15px 0;}/*!sc*/
+p:last-child,p:last-of-type{margin:0;}/*!sc*/
+p > a{display:inline-block;-webkit-text-decoration:none;text-decoration:none;-webkit-text-decoration-skip-ink:auto;text-decoration-skip-ink:auto;position:relative;-webkit-transition:var(--transition);transition:var(--transition);color:var(--pink);}/*!sc*/
+p > a:hover,p > a:focus,p > a:active{color:var(--pink);outline:0;}/*!sc*/
+p > a:hover:after,p > a:focus:after,p > a:active:after{width:100%;}/*!sc*/
+p > a:hover > *,p > a:focus > *,p > a:active > *{color:var(--pink) !important;-webkit-transition:var(--transition);transition:var(--transition);}/*!sc*/
+p > a:after{content:'';display:block;width:0;height:1px;position:relative;bottom:0.37em;background-color:var(--pink);-webkit-transition:var(--transition);transition:var(--transition);opacity:0.5;}/*!sc*/
+p > code{background-color:var(--light-navy);color:var(--white);font-size:var(--fz-sm);border-radius:var(--border-radius);padding:0.3em 0.5em;}/*!sc*/
+ul.fancy-list{padding:0;margin:0;list-style:none;font-size:var(--fz-lg);}/*!sc*/
+ul.fancy-list li{position:relative;padding-left:30px;margin-bottom:10px;}/*!sc*/
+ul.fancy-list li:before{content:'▹';position:absolute;left:0;color:var(--pink);}/*!sc*/
+blockquote{border-left-color:var(--pink);border-left-style:solid;border-left-width:1px;margin-left:0px;margin-right:0px;padding-left:1.5rem;}/*!sc*/
+blockquote p{font-style:italic;font-size:24px;}/*!sc*/
+hr{background-color:var(--lightest-navy);height:1px;border-width:0px;border-style:initial;border-color:initial;border-image:initial;margin:1rem;}/*!sc*/
+code{font-family:var(--font-mono);font-size:var(--fz-md);}/*!sc*/
+.skip-to-content{color:var(--pink);background-color:transparent;border:1px solid var(--pink);border-radius:var(--border-radius);padding:0.75rem 1rem;font-size:var(--fz-xs);font-family:var(--font-mono);line-height:1;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;-webkit-transition:var(--transition);transition:var(--transition);position:absolute;top:auto;left:-999px;width:1px;height:1px;overflow:hidden;z-index:-99;}/*!sc*/
+.skip-to-content:hover,.skip-to-content:focus,.skip-to-content:active{background-color:var(--pink-tint);outline:none;}/*!sc*/
+.skip-to-content:after{display:none !important;}/*!sc*/
+.skip-to-content:focus,.skip-to-content:active{background-color:var(--pink);color:var(--navy);top:0;left:0;width:auto;height:auto;overflow:auto;z-index:99;}/*!sc*/
+#logo{color:var(--pink);}/*!sc*/
+.overline{color:var(--pink);font-family:var(--font-mono);font-size:var(--fz-md);font-weight:400;}/*!sc*/
+.subtitle{color:var(--pink);margin:0 0 20px 0;font-size:var(--fz-md);font-family:var(--font-mono);font-weight:400;line-height:1.5;}/*!sc*/
+@media (max-width:1080px){.subtitle{font-size:var(--fz-sm);}}/*!sc*/
+@media (max-width:768px){.subtitle{font-size:var(--fz-xs);}}/*!sc*/
+.subtitle a{display:inline-block;-webkit-text-decoration:none;text-decoration:none;-webkit-text-decoration-skip-ink:auto;text-decoration-skip-ink:auto;position:relative;-webkit-transition:var(--transition);transition:var(--transition);color:var(--pink);line-height:1.5;}/*!sc*/
+.subtitle a:hover,.subtitle a:focus,.subtitle a:active{color:var(--pink);outline:0;}/*!sc*/
+.subtitle a:hover:after,.subtitle a:focus:after,.subtitle a:active:after{width:100%;}/*!sc*/
+.subtitle a:hover > *,.subtitle a:focus > *,.subtitle a:active > *{color:var(--pink) !important;-webkit-transition:var(--transition);transition:var(--transition);}/*!sc*/
+.subtitle a:after{content:'';display:block;width:0;height:1px;position:relative;bottom:0.37em;background-color:var(--pink);-webkit-transition:var(--transition);transition:var(--transition);opacity:0.5;}/*!sc*/
+.breadcrumb{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-bottom:50px;color:var(--pink);}/*!sc*/
+.breadcrumb .arrow{display:block;margin-right:10px;padding-top:4px;}/*!sc*/
+.breadcrumb a{display:inline-block;-webkit-text-decoration:none;text-decoration:none;-webkit-text-decoration-skip-ink:auto;text-decoration-skip-ink:auto;position:relative;-webkit-transition:var(--transition);transition:var(--transition);color:var(--pink);font-family:var(--font-mono);font-size:var(--fz-sm);font-weight:600;line-height:1.5;text-transform:uppercase;-webkit-letter-spacing:0.1em;-moz-letter-spacing:0.1em;-ms-letter-spacing:0.1em;letter-spacing:0.1em;}/*!sc*/
+.breadcrumb a:hover,.breadcrumb a:focus,.breadcrumb a:active{color:var(--pink);outline:0;}/*!sc*/
+.breadcrumb a:hover:after,.breadcrumb a:focus:after,.breadcrumb a:active:after{width:100%;}/*!sc*/
+.breadcrumb a:hover > *,.breadcrumb a:focus > *,.breadcrumb a:active > *{color:var(--pink) !important;-webkit-transition:var(--transition);transition:var(--transition);}/*!sc*/
+.breadcrumb a:after{content:'';display:block;width:0;height:1px;position:relative;bottom:0.37em;background-color:var(--pink);-webkit-transition:var(--transition);transition:var(--transition);opacity:0.5;}/*!sc*/
+.gatsby-image-outer-wrapper{height:100%;}/*!sc*/
+.fadeup-enter{opacity:0.01;-webkit-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px);-webkit-transition:opacity 300ms var(--easing),-webkit-transform 300ms var(--easing);-webkit-transition:opacity 300ms var(--easing),transform 300ms var(--easing);transition:opacity 300ms var(--easing),transform 300ms var(--easing);}/*!sc*/
+.fadeup-enter-active{opacity:1;-webkit-transform:translateY(0px);-ms-transform:translateY(0px);transform:translateY(0px);-webkit-transition:opacity 300ms var(--easing),-webkit-transform 300ms var(--easing);-webkit-transition:opacity 300ms var(--easing),transform 300ms var(--easing);transition:opacity 300ms var(--easing),transform 300ms var(--easing);}/*!sc*/
+.fadedown-enter{opacity:0.01;-webkit-transform:translateY(-20px);-ms-transform:translateY(-20px);transform:translateY(-20px);-webkit-transition:opacity 300ms var(--easing),-webkit-transform 300ms var(--easing);-webkit-transition:opacity 300ms var(--easing),transform 300ms var(--easing);transition:opacity 300ms var(--easing),transform 300ms var(--easing);}/*!sc*/
+.fadedown-enter-active{opacity:1;-webkit-transform:translateY(0px);-ms-transform:translateY(0px);transform:translateY(0px);-webkit-transition:opacity 300ms var(--easing),-webkit-transform 300ms var(--easing);-webkit-transition:opacity 300ms var(--easing),transform 300ms var(--easing);transition:opacity 300ms var(--easing),transform 300ms var(--easing);}/*!sc*/
+.fade-enter{opacity:0;}/*!sc*/
+.fade-enter-active{opacity:1;-webkit-transition:opacity 300ms var(--easing);transition:opacity 300ms var(--easing);}/*!sc*/
+.fade-exit{opacity:1;}/*!sc*/
+.fade-exit-active{opacity:0;-webkit-transition:opacity 300ms var(--easing);transition:opacity 300ms var(--easing);}/*!sc*/
+.gatsby-highlight{background-color:#3A2F3A;color:#AA9FAA;border-radius:var(--border-radius);margin:2em 0;padding:1.25em;overflow:auto;position:relative;font-family:var(--font-mono);font-size:var(--fz-md);}/*!sc*/
+.gatsby-highlight code[class*='language-'],.gatsby-highlight pre[class*='language-']{height:auto !important;font-size:var(--fz-sm);line-height:1.5;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;tab-size:2;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;}/*!sc*/
+.gatsby-highlight pre[class*='language-']{background-color:transparent;margin:0;padding:0;overflow:initial;float:left;min-width:100%;padding-top:2em;}/*!sc*/
+.gatsby-code-title{padding:1em 1.5em;font-family:var(--font-mono);font-size:var(--fz-xs);background-color:#3A2F3A;color:#AA9FAA;border-top-left-radius:var(--border-radius);border-top-right-radius:var(--border-radius);border-bottom:1px solid #4A3F4A;}/*!sc*/
+.gatsby-code-title + .gatsby-highlight{margin-top:0;border-top-left-radius:0;border-top-right-radius:0;}/*!sc*/
+.gatsby-highlight-code-line{display:block;background-color:var(--pink-tint);border-left:2px solid var(--pink);padding-left:calc(1em + 2px);padding-right:1em;margin-right:-1.35em;margin-left:-1.35em;}/*!sc*/
+.gatsby-highlight pre[class*='language-']::before{background:var(--lightest-navy);color:var(--white);font-size:var(--fz-xxs);font-family:var(--font-mono);line-height:1.5;-webkit-letter-spacing:0.1em;-moz-letter-spacing:0.1em;-ms-letter-spacing:0.1em;letter-spacing:0.1em;text-transform:uppercase;border-radius:0 0 3px 3px;position:absolute;top:0;left:1.25rem;padding:0.25rem 0.5rem;}/*!sc*/
+.gatsby-highlight pre[class='language-javascript']::before{content:'js';}/*!sc*/
+.gatsby-highlight pre[class='language-js']::before{content:'js';}/*!sc*/
+.gatsby-highlight pre[class='language-jsx']::before{content:'jsx';}/*!sc*/
+.gatsby-highlight pre[class='language-graphql']::before{content:'GraphQL';}/*!sc*/
+.gatsby-highlight pre[class='language-html']::before{content:'html';}/*!sc*/
+.gatsby-highlight pre[class='language-css']::before{content:'css';}/*!sc*/
+.gatsby-highlight pre[class='language-mdx']::before{content:'mdx';}/*!sc*/
+.gatsby-highlight pre[class='language-shell']::before{content:'shell';}/*!sc*/
+.gatsby-highlight pre[class='language-sh']::before{content:'sh';}/*!sc*/
+.gatsby-highlight pre[class='language-bash']::before{content:'bash';}/*!sc*/
+.gatsby-highlight pre[class='language-yaml']::before{content:'yaml';}/*!sc*/
+.gatsby-highlight pre[class='language-markdown']::before{content:'md';}/*!sc*/
+.gatsby-highlight pre[class='language-json']::before,.gatsby-highlight pre[class='language-json5']::before{content:'json';}/*!sc*/
+.gatsby-highlight pre[class='language-diff']::before{content:'diff';}/*!sc*/
+.gatsby-highlight pre[class='language-text']::before{content:'text';}/*!sc*/
+.gatsby-highlight pre[class='language-flow']::before{content:'flow';}/*!sc*/
+.token{display:inline;}/*!sc*/
+.token.comment,.token.block-comment,.token.prolog,.token.doctype,.token.cdata{color:#8A7F8A99;}/*!sc*/
+.token.punctuation{color:#AA9FAA;}/*!sc*/
+.token.namespace,.token.deleted{color:#FFA5B5;}/*!sc*/
+.token.function-name,.token.function,.token.class-name,.token.constant,.token.symbol{color:#FFE6A5;}/*!sc*/
+.token.attr-name,.token.operator,.token.rule{color:#FFB5A5;}/*!sc*/
+.token.keyword,.token.boolean,.token.number,.token.property{color:#D6A5FF;}/*!sc*/
+.token.tag,.token.selector,.token.important,.token.atrule,.token.builtin,.token.entity,.token.url{color:#A5D6FF;}/*!sc*/
+.token.string,.token.char,.token.attr-value,.token.regex,.token.variable,.token.inserted{color:#FFA5B5;}/*!sc*/
+.token.important,.token.bold{font-weight:600;}/*!sc*/
+.token.italic{font-style:italic;}/*!sc*/
+.token.entity{cursor:help;}/*!sc*/
+.namespace{opacity:0.7;}/*!sc*/
+::-webkit-scrollbar{width:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:var(--navy);border-radius:10px;}/*!sc*/
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--pink),var(--coral));border-radius:10px;border:2px solid var(--navy);}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--coral),var(--pink));}/*!sc*/
+::selection{background:linear-gradient(135deg,var(--pink-tint),var(--coral));color:var(--white);}/*!sc*/
+:focus{outline:2px solid var(--pink);outline-offset:3px;box-shadow:0 0 0 4px var(--pink-tint);}/*!sc*/
+a{position:relative;-webkit-transition:all 0.3s cubic-bezier(0.645,0.045,0.355,1);transition:all 0.3s cubic-bezier(0.645,0.045,0.355,1);}/*!sc*/
+a:hover{color:var(--pink);text-shadow:0 0 8px var(--pink-shadow);}/*!sc*/
+button{position:relative;overflow:hidden;-webkit-transition:all 0.3s cubic-bezier(0.645,0.045,0.355,1);transition:all 0.3s cubic-bezier(0.645,0.045,0.355,1);}/*!sc*/
+button:hover{-webkit-transform:translateY(-2px);-ms-transform:translateY(-2px);transform:translateY(-2px);box-shadow:0 10px 25px var(--pink-shadow);}/*!sc*/
+h1,h2,h3,h4,h5,h6{background:linear-gradient(135deg,var(--lightest-slate),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}/*!sc*/
+pre[class*='language-']{background:linear-gradient(135deg,var(--navy),var(--light-navy));border:1px solid var(--pink-tint);box-shadow:0 10px 30px var(--pink-shadow);}/*!sc*/
+img{-webkit-transition:all 0.3s cubic-bezier(0.645,0.045,0.355,1);transition:all 0.3s cubic-bezier(0.645,0.045,0.355,1);}/*!sc*/
+img:hover{-webkit-transform:scale(1.02);-ms-transform:scale(1.02);transform:scale(1.02);-webkit-filter:brightness(1.1) saturate(1.1);filter:brightness(1.1) saturate(1.1);}/*!sc*/
+data-styled.g1[id="sc-global-iyqQpO1"]{content:"sc-global-iyqQpO1,"}/*!sc*/
+.gbfogg{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;min-height:100vh;}/*!sc*/
+data-styled.g2[id="layout__StyledContent-sc-1yw8zls-0"]{content:"gbfogg,"}/*!sc*/
+.iayXvr{position:fixed;top:0;left:0;right:0;z-index:10;background:transparent;padding:0 50px;height:70px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;}/*!sc*/
+@media (max-width:1200px){.iayXvr{padding:0 40px;}}/*!sc*/
+@media (max-width:1024px){.iayXvr{padding:0 30px;}}/*!sc*/
+@media (max-width:768px){.iayXvr{padding:0 20px;height:60px;}}/*!sc*/
+@media (max-width:480px){.iayXvr{padding:0 15px;height:55px;}}/*!sc*/
+@media (max-width:360px){.iayXvr{padding:0 10px;height:50px;}}/*!sc*/
+data-styled.g7[id="leftnav__StyledTopNav-sc-2r5oo7-0"]{content:"iayXvr,"}/*!sc*/
+.fhxQxb{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:2rem;list-style:none;padding:0;margin:0;}/*!sc*/
+@media (max-width:1200px){.fhxQxb{gap:1.8rem;}}/*!sc*/
+@media (max-width:1024px){.fhxQxb{gap:1.6rem;}}/*!sc*/
+@media (max-width:768px){.fhxQxb{position:fixed;top:60px;left:0;right:0;background:rgba(10,25,47,0.98);-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding:20px 0;gap:0;-webkit-transform:translateY(-100%);-ms-transform:translateY(-100%);transform:translateY(-100%);-webkit-transition:-webkit-transform 0.3s ease;-webkit-transition:transform 0.3s ease;transition:transform 0.3s ease;z-index:1000;border-bottom:1px solid rgba(255,165,165,0.1);box-shadow:0 4px 20px rgba(0,0,0,0.3);opacity:0;visibility:hidden;}}/*!sc*/
+@media (max-width:480px){.fhxQxb{top:55px;padding:15px 0;}}/*!sc*/
+@media (max-width:360px){.fhxQxb{top:50px;padding:10px 0;}}/*!sc*/
+data-styled.g8[id="leftnav__StyledNavList-sc-2r5oo7-1"]{content:"fhxQxb,"}/*!sc*/
+.ekaFeA{color:var(--pink);-webkit-text-decoration:none;text-decoration:none;font-family:var(--font-mono);font-size:var(--fz-sm);-webkit-transition:var(--transition);transition:var(--transition);cursor:pointer;padding:0.5rem 0.3rem;position:relative;white-space:nowrap;}/*!sc*/
+@media (max-width:1024px){.ekaFeA{font-size:clamp(12px,1.4vw,13px);padding:0.4rem 0.25rem;}}/*!sc*/
+@media (max-width:768px){.ekaFeA{font-size:clamp(14px,1.5vw,16px);padding:1rem 0;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);width:100%;}.ekaFeA:last-child{border-bottom:none;}.ekaFeA:hover{background:rgba(255,255,255,0.05);-webkit-transform:none;-ms-transform:none;transform:none;}}/*!sc*/
+@media (max-width:480px){.ekaFeA{font-size:clamp(10px,1.2vw,11px);padding:0.25rem 0.15rem;}}/*!sc*/
+@media (max-width:360px){.ekaFeA{font-size:clamp(9px,1.1vw,10px);padding:0.2rem 0.1rem;}}/*!sc*/
+.ekaFeA:hover{color:var(--pink);-webkit-transform:translateY(-1px);-ms-transform:translateY(-1px);transform:translateY(-1px);}/*!sc*/
+.ekaFeA:after{content:'';position:absolute;bottom:0;left:50%;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);width:0;height:2px;background:var(--pink);-webkit-transition:width 0.3s ease;transition:width 0.3s ease;}/*!sc*/
+.ekaFeA:hover:after,.ekaFeA.active:after{width:80%;}/*!sc*/
+.biAsrg{color:var(--light-slate);-webkit-text-decoration:none;text-decoration:none;font-family:var(--font-mono);font-size:var(--fz-sm);-webkit-transition:var(--transition);transition:var(--transition);cursor:pointer;padding:0.5rem 0.3rem;position:relative;white-space:nowrap;}/*!sc*/
+@media (max-width:1024px){.biAsrg{font-size:clamp(12px,1.4vw,13px);padding:0.4rem 0.25rem;}}/*!sc*/
+@media (max-width:768px){.biAsrg{font-size:clamp(14px,1.5vw,16px);padding:1rem 0;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);width:100%;}.biAsrg:last-child{border-bottom:none;}.biAsrg:hover{background:rgba(255,255,255,0.05);-webkit-transform:none;-ms-transform:none;transform:none;}}/*!sc*/
+@media (max-width:480px){.biAsrg{font-size:clamp(10px,1.2vw,11px);padding:0.25rem 0.15rem;}}/*!sc*/
+@media (max-width:360px){.biAsrg{font-size:clamp(9px,1.1vw,10px);padding:0.2rem 0.1rem;}}/*!sc*/
+.biAsrg:hover{color:var(--pink);-webkit-transform:translateY(-1px);-ms-transform:translateY(-1px);transform:translateY(-1px);}/*!sc*/
+.biAsrg:after{content:'';position:absolute;bottom:0;left:50%;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);width:0;height:2px;background:var(--pink);-webkit-transition:width 0.3s ease;transition:width 0.3s ease;}/*!sc*/
+.biAsrg:hover:after,.biAsrg.active:after{width:80%;}/*!sc*/
+data-styled.g9[id="leftnav__StyledNavItem-sc-2r5oo7-2"]{content:"ekaFeA,biAsrg,"}/*!sc*/
+.nFIrv{display:none;background:none;border:none;cursor:pointer;padding:0.5rem;z-index:11;position:relative;}/*!sc*/
+@media (max-width:768px){.nFIrv{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;gap:4px;}}/*!sc*/
+.nFIrv .hamburger-line{width:25px;height:2px;background:var(--light-slate);-webkit-transition:all 0.3s ease;transition:all 0.3s ease;-webkit-transform-origin:center;-ms-transform-origin:center;transform-origin:center;border-radius:1px;}/*!sc*/
+.nFIrv .hamburger-line:nth-child(1){-webkit-transform:none;-ms-transform:none;transform:none;}/*!sc*/
+.nFIrv .hamburger-line:nth-child(2){opacity:1;}/*!sc*/
+.nFIrv .hamburger-line:nth-child(3){-webkit-transform:none;-ms-transform:none;transform:none;}/*!sc*/
+.nFIrv:hover .hamburger-line{background:var(--pink);}/*!sc*/
+.nFIrv:focus{outline:none;}/*!sc*/
+data-styled.g10[id="leftnav__StyledHamburger-sc-2r5oo7-3"]{content:"nFIrv,"}/*!sc*/
+.ekQeZ{display:none;}/*!sc*/
+@media (max-width:768px){.ekQeZ{display:block;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.3);z-index:999;opacity:0;visibility:hidden;-webkit-transition:opacity 0.3s ease,visibility 0.3s ease;transition:opacity 0.3s ease,visibility 0.3s ease;}}/*!sc*/
+data-styled.g11[id="leftnav__StyledBackdrop-sc-2r5oo7-4"]{content:"ekQeZ,"}/*!sc*/
+.bWqEjw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:auto;min-height:70px;padding:15px 20px;text-align:center;}/*!sc*/
+@media (max-width:768px){.bWqEjw{padding:15px;}}/*!sc*/
+@media (max-width:480px){.bWqEjw{padding:10px;min-height:60px;}}/*!sc*/
+data-styled.g18[id="footer__StyledFooter-sc-4jwnt4-0"]{content:"bWqEjw,"}/*!sc*/
+.kPlvSp{display:none;}/*!sc*/
+@media (max-width:768px){.kPlvSp{display:block;width:100%;max-width:270px;margin:0 auto 10px;color:var(--light-slate);}}/*!sc*/
+@media (max-width:480px){.kPlvSp{max-width:250px;margin:0 auto 8px;}}/*!sc*/
+.kPlvSp ul{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:0;margin:0;list-style:none;}/*!sc*/
+.kPlvSp ul a{padding:10px;-webkit-transition:var(--transition);transition:var(--transition);}/*!sc*/
+@media (max-width:480px){.kPlvSp ul a{padding:8px;}}/*!sc*/
+.kPlvSp ul a:hover{-webkit-transform:translateY(-2px);-ms-transform:translateY(-2px);transform:translateY(-2px);color:var(--pink);}/*!sc*/
+.kPlvSp ul a svg{width:20px;height:20px;}/*!sc*/
+@media (max-width:480px){.kPlvSp ul a svg{width:18px;height:18px;}}/*!sc*/
+data-styled.g19[id="footer__StyledSocialLinks-sc-4jwnt4-1"]{content:"kPlvSp,"}/*!sc*/
+.dqXkSV{max-width:1000px;}/*!sc*/
+data-styled.g50[id="post__StyledPostContainer-sc-8858gx-0"]{content:"dqXkSV,"}/*!sc*/
+.wYQEO{margin-bottom:50px;}/*!sc*/
+.wYQEO .tag{margin-right:10px;}/*!sc*/
+data-styled.g51[id="post__StyledPostHeader-sc-8858gx-1"]{content:"wYQEO,"}/*!sc*/
+.dCwooT{margin-bottom:100px;}/*!sc*/
+.dCwooT h1,.dCwooT h2,.dCwooT h3,.dCwooT h4,.dCwooT h5,.dCwooT h6{margin:2em 0 1em;}/*!sc*/
+.dCwooT p{margin:1em 0;line-height:1.5;color:var(--light-slate);}/*!sc*/
+.dCwooT a{display:inline-block;-webkit-text-decoration:none;text-decoration:none;-webkit-text-decoration-skip-ink:auto;text-decoration-skip-ink:auto;position:relative;-webkit-transition:var(--transition);transition:var(--transition);color:var(--pink);}/*!sc*/
+.dCwooT a:hover,.dCwooT a:focus,.dCwooT a:active{color:var(--pink);outline:0;}/*!sc*/
+.dCwooT a:hover:after,.dCwooT a:focus:after,.dCwooT a:active:after{width:100%;}/*!sc*/
+.dCwooT a:hover > *,.dCwooT a:focus > *,.dCwooT a:active > *{color:var(--pink) !important;-webkit-transition:var(--transition);transition:var(--transition);}/*!sc*/
+.dCwooT a:after{content:'';display:block;width:0;height:1px;position:relative;bottom:0.37em;background-color:var(--pink);-webkit-transition:var(--transition);transition:var(--transition);opacity:0.5;}/*!sc*/
+.dCwooT code{background-color:var(--lightest-navy);color:var(--lightest-slate);border-radius:var(--border-radius);font-size:var(--fz-sm);padding:0.2em 0.4em;}/*!sc*/
+.dCwooT pre code{background-color:transparent;padding:0;}/*!sc*/
+data-styled.g52[id="post__StyledPostContent-sc-8858gx-2"]{content:"dCwooT,"}/*!sc*/
+</style><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/><link rel="icon" href="/favicon-32x32.png?v=f7649005e6fe97cad9a6e45f597f56fd" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#3a2f3a"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=f7649005e6fe97cad9a6e45f597f56fd"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=f7649005e6fe97cad9a6e45f597f56fd"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=f7649005e6fe97cad9a6e45f597f56fd"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=f7649005e6fe97cad9a6e45f597f56fd"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=f7649005e6fe97cad9a6e45f597f56fd"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=f7649005e6fe97cad9a6e45f597f56fd"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=f7649005e6fe97cad9a6e45f597f56fd"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=f7649005e6fe97cad9a6e45f597f56fd"/><link rel="preconnect" href="https://www.google-analytics.com"/><link rel="dns-prefetch" href="https://www.google-analytics.com"/><link as="script" rel="preload" href="/webpack-runtime-c20f0070b782c82a98d6.js"/><link as="script" rel="preload" href="/framework-11dbb24a71245e1d8949.js"/><link as="script" rel="preload" href="/app-1a4aa5ade615402834f1.js"/><link as="script" rel="preload" href="/546641dfde76ed00139ea2c3eae09499c5f2164a-cf8eda9ce81afa3e0e7c.js"/><link as="script" rel="preload" href="/component---src-templates-post-js-44cfca7ea4713c9a1758.js"/><link as="fetch" rel="preload" href="/page-data/pensieve/dark-mode-toggle/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1994492073.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2031412112.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/3379921481.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/905427728.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div id="root"><a class="skip-to-content" href="#content">Skip to Content</a><div class="layout__StyledContent-sc-1yw8zls-0 gbfogg"><div class="leftnav__StyledBackdrop-sc-2r5oo7-4 ekQeZ"></div><nav class="leftnav__StyledTopNav-sc-2r5oo7-0 iayXvr"><ul class="leftnav__StyledNavList-sc-2r5oo7-1 fhxQxb"><li><a href="/#hero" class="leftnav__StyledNavItem-sc-2r5oo7-2 ekaFeA active">Home</a></li><li><a href="/#jobs" class="leftnav__StyledNavItem-sc-2r5oo7-2 biAsrg">Experience</a></li><li><a href="/#projects" class="leftnav__StyledNavItem-sc-2r5oo7-2 biAsrg">Projects</a></li><li><a href="/#articles" class="leftnav__StyledNavItem-sc-2r5oo7-2 biAsrg">Articles</a></li><li><a href="/#certifications" class="leftnav__StyledNavItem-sc-2r5oo7-2 biAsrg">Certifications</a></li><li><a href="/#technologies" class="leftnav__StyledNavItem-sc-2r5oo7-2 biAsrg">Technologies</a></li><li><a href="/resume2.pdf" class="leftnav__StyledNavItem-sc-2r5oo7-2 biAsrg">Resume</a></li></ul><button class="leftnav__StyledHamburger-sc-2r5oo7-3 nFIrv"><div class="hamburger-line"></div><div class="hamburger-line"></div><div class="hamburger-line"></div></button></nav><div id="content"><main class="post__StyledPostContainer-sc-8858gx-0 dqXkSV"><span class="breadcrumb"><span class="arrow">←</span><a href="/pensieve">All memories</a></span><header class="post__StyledPostHeader-sc-8858gx-1 wYQEO"><h1 class="medium-heading">Dark Mode Toggle</h1><p class="subtitle"><time>April 21, 2021</time><span> — </span><a class="tag" href="/pensieve/tags/theming/">#<!-- -->Theming</a><a class="tag" href="/pensieve/tags/dark-mode/">#<!-- -->Dark Mode</a></p></header><div class="post__StyledPostContent-sc-8858gx-2 dCwooT"><p>Dark mode toggle without the flash of default theme. Important bits:</p>
+<ul>
+<li>CSS variables for color theming</li>
+<li>Put <code class="language-text">data-theme</code> attribute on <code class="language-text">&lt;html></code>, not <code class="language-text">&lt;body></code>, so we can run the JS before the DOM finishes rendering</li>
+<li>Run local storage check in the <code class="language-text">&lt;head></code></li>
+<li>JS for toggle button click handler can come after render</li>
+</ul>
+<h2>HTML</h2>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span> <span class="token attr-name">data-theme</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>light<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    ...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+      <span class="token comment">// If there's a theme stored in localStorage, use it on the &lt;html></span>
+      <span class="token keyword">const</span> localStorageTheme <span class="token operator">=</span> localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'theme'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>localStorageTheme<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'data-theme'</span><span class="token punctuation">,</span> localStorageTheme<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>theme-toggle<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>
+        <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>theme-toggle-btn js-theme-toggle<span class="token punctuation">"</span></span>
+        <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Activate dark mode<span class="token punctuation">"</span></span>
+        <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Activate dark mode<span class="token punctuation">"</span></span>
+      <span class="token punctuation">></span></span>
+        <span class="token comment">&lt;!--
+        &lt;svg class="light-mode">
+          &lt;use xlink:href="#sun">&lt;/use>
+        &lt;/svg>
+        &lt;svg class="dark-mode">
+          &lt;use xlink:href="#moon">&lt;/use>
+        &lt;/svg>
+        --></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre></div>
+<h2>CSS Variables</h2>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">--bg</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span>
+  <span class="token property">--text</span><span class="token punctuation">:</span> #000000<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">[data-theme='dark']</span> <span class="token punctuation">{</span>
+  <span class="token property">--bg</span><span class="token punctuation">:</span> #000000<span class="token punctuation">;</span>
+  <span class="token property">--text</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h2>JavaScript</h2>
+<div class="gatsby-code-title">app.js</div>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> themeToggleBtn <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'.js-theme-toggle'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+themeToggleBtn<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">onToggleClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">onToggleClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> theme <span class="token punctuation">}</span> <span class="token operator">=</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>dataset<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> themeTo <span class="token operator">=</span> theme <span class="token operator">&amp;&amp;</span> theme <span class="token operator">===</span> <span class="token string">'light'</span> <span class="token operator">?</span> <span class="token string">'dark'</span> <span class="token operator">:</span> <span class="token string">'light'</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> label <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Activate </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>theme<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> mode</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+
+  document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'data-theme'</span><span class="token punctuation">,</span> themeTo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'theme'</span><span class="token punctuation">,</span> themeTo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  themeToggleBtn<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'aria-label'</span><span class="token punctuation">,</span> label<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  themeToggleBtn<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">,</span> label<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/" target="_blank" rel="nofollow noopener noreferrer">https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/</a></li>
+<li><a href="https://css-tricks.com/flash-of-inaccurate-color-theme-fart/" target="_blank" rel="nofollow noopener noreferrer">https://css-tricks.com/flash-of-inaccurate-color-theme-fart/</a></li>
+<li><a href="https://mxb.dev/blog/color-theme-switcher/" target="_blank" rel="nofollow noopener noreferrer">https://mxb.dev/blog/color-theme-switcher/</a></li>
+<li><a href="https://www.joshwcomeau.com/react/dark-mode/" target="_blank" rel="nofollow noopener noreferrer">https://www.joshwcomeau.com/react/dark-mode/</a></li>
+<li><a href="https://web.dev/prefers-color-scheme/" target="_blank" rel="nofollow noopener noreferrer">https://web.dev/prefers-color-scheme/</a></li>
+</ul></div></main><footer class="footer__StyledFooter-sc-4jwnt4-0 bWqEjw"><div class="footer__StyledSocialLinks-sc-4jwnt4-1 kPlvSp"><ul><li><a href="" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></li><li><a href="" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><title>Instagram</title><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a></li><li><a href="" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><title>Twitter</title><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a></li><li><a href="https://www.linkedin.com/in/varshinichallagundla/" aria-label="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><title>LinkedIn</title><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a></li><li><a href="" aria-label="Codepen"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-codepen"><title>CodePen</title><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon><line x1="12" y1="22" x2="12" y2="15.5"></line><polyline points="22 8.5 12 15.5 2 8.5"></polyline><polyline points="2 15.5 12 8.5 22 15.5"></polyline><line x1="12" y1="2" x2="12" y2="8.5"></line></svg></a></li></ul></div></footer></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-45666519-2', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/pensieve/dark-mode-toggle";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-1a4aa5ade615402834f1.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-6f061b09cc63f0400406.js"],"component---src-pages-404-js":["/component---src-pages-404-js-bf98d525df06c6b4f0fe.js"],"component---src-pages-archive-js":["/component---src-pages-archive-js-ef9cbe77ae95c16c1f2f.js"],"component---src-pages-index-js":["/component---src-pages-index-js-d0089e8fe45b91e6497e.js"],"component---src-pages-pensieve-index-js":["/component---src-pages-pensieve-index-js-3e3a0fc0fd9003b20c6b.js"],"component---src-pages-pensieve-tags-js":["/component---src-pages-pensieve-tags-js-d584e62d7a29635fc260.js"],"component---src-templates-post-js":["/component---src-templates-post-js-44cfca7ea4713c9a1758.js"],"component---src-templates-tag-js":["/component---src-templates-tag-js-d29d213f4f7fa1569c7a.js"]};/*]]>*/</script><script src="/component---src-templates-post-js-44cfca7ea4713c9a1758.js" async=""></script><script src="/546641dfde76ed00139ea2c3eae09499c5f2164a-cf8eda9ce81afa3e0e7c.js" async=""></script><script src="/app-1a4aa5ade615402834f1.js" async=""></script><script src="/framework-11dbb24a71245e1d8949.js" async=""></script><script src="/webpack-runtime-c20f0070b782c82a98d6.js" async=""></script></body></html>
