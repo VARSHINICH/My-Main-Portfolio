@@ -21,7 +21,7 @@ const StyledHeroSection = styled.section`
     padding: 0 30px;
   }
 
-  @media (max-width: 768px) {
+  s @media (max-width: 768px) {
     flex-direction: column;
     gap: 2rem;
     text-align: center;
@@ -150,7 +150,7 @@ const StyledHeroSection = styled.section`
       @media (max-width: 768px) {
         width: 45px;
         height: 45px;
-        
+
         svg {
           width: 18px;
           height: 18px;
@@ -160,7 +160,7 @@ const StyledHeroSection = styled.section`
       @media (max-width: 480px) {
         width: 42px;
         height: 42px;
-        
+
         svg {
           width: 17px;
           height: 17px;
@@ -244,7 +244,9 @@ const Hero = () => {
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Varshini Challagundla</h2>;
-  const three = <h3 className="big-heading">I build accessible, scalable digital experiences for the web.</h3>;
+  const three = (
+    <h3 className="big-heading">I build accessible, scalable digital experiences for the web.</h3>
+  );
   const four = (
     <>
       <p>
@@ -272,10 +274,7 @@ const Hero = () => {
         aria-label="GitHub">
         <Icon name="GitHub" />
       </a>
-      <a
-        className="social-link"
-        href="mailto:varshinichallagundla@gmail.com"
-        aria-label="Email">
+      <a className="social-link" href="mailto:varshinichallagundla@gmail.com" aria-label="Email">
         <Icon name="Email" />
       </a>
     </div>
@@ -303,7 +302,7 @@ const Hero = () => {
           </TransitionGroup>
         )}
       </StyledHeroContent>
-      
+
       <StyledHeroImage>
         <div className="image-wrapper">
           <StaticImage
