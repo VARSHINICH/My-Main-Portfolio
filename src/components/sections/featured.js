@@ -250,7 +250,7 @@ const StyledProject = styled.li`
     @media (max-width: 768px) {
       grid-column: 1 / -1;
       height: 100%;
-      opacity: 0.25;
+      opacity: 1;
       pointer-events: none; /* Disable clicks on mobile */
     }
 
@@ -292,7 +292,7 @@ const StyledProject = styled.li`
         z-index: 3;
         transition: var(--transition);
         background-color: var(--navy);
-        mix-blend-mode: screen;
+        opacity: 0.8;
 
         @media (max-width: 768px) {
           display: none; /* Hide overlay on mobile */

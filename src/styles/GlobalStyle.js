@@ -238,7 +238,7 @@ const GlobalStyle = createGlobalStyle`
 
   img[alt=""],
   img:not([alt]) {
-    filter: blur(5px);
+    /* Removed blur filter */
   }
 
   svg {
