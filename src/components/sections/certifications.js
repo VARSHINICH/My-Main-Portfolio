@@ -4,7 +4,10 @@ import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
-import { StaticImage } from 'gatsby-plugin-image';
+import awsLogo from '../../images/aws-logo.png';
+import gcpLogo from '../../images/gcp-logo.png';
+import terraformLogo from '../../images/terraform-logo.png';
+import certificateIcon from '../../images/certificate-icon.png';
 
 const StyledCertificationsSection = styled.section`
   max-width: 1000px;
@@ -149,6 +152,15 @@ const StyledCertificationsSection = styled.section`
       .gatsby-image-wrapper {
         width: 120px;
         height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          object-fit: contain !important;
+          max-width: 100%;
+          max-height: 100%;
+        }
 
         @media (max-width: 1024px) {
           width: 110px;
@@ -246,44 +258,60 @@ const Certifications = () => {
   const getCertificationImage = title => {
     if (title.toLowerCase().includes('aws')) {
       return (
-        <StaticImage
-          src="../../images/aws-logo.png"
+        <img
+          src={awsLogo}
           alt="AWS Logo"
-          width={120}
-          height={120}
-          placeholder="blurred"
+          style={{
+            width: '80px',
+            height: '80px',
+            objectFit: 'contain',
+            display: 'block',
+            margin: '0 auto',
+          }}
         />
       );
     }
     if (title.toLowerCase().includes('google') || title.toLowerCase().includes('data analytics')) {
       return (
-        <StaticImage
-          src="../../images/gcp-logo.png"
+        <img
+          src={gcpLogo}
           alt="GCP Logo"
-          width={120}
-          height={120}
-          placeholder="blurred"
+          style={{
+            width: '80px',
+            height: '80px',
+            objectFit: 'contain',
+            display: 'block',
+            margin: '0 auto',
+          }}
         />
       );
     }
     if (title.toLowerCase().includes('terraform') || title.toLowerCase().includes('hashicorp')) {
       return (
-        <StaticImage
-          src="../../images/terraform-logo.png"
+        <img
+          src={terraformLogo}
           alt="Terraform Logo"
-          width={120}
-          height={120}
-          placeholder="blurred"
+          style={{
+            width: '80px',
+            height: '80px',
+            objectFit: 'contain',
+            display: 'block',
+            margin: '0 auto',
+          }}
         />
       );
     }
     return (
-      <StaticImage
-        src="../../images/certificate-icon.png"
+      <img
+        src={certificateIcon}
         alt="Certificate Icon"
-        width={120}
-        height={120}
-        placeholder="blurred"
+        style={{
+          width: '80px',
+          height: '80px',
+          objectFit: 'contain',
+          display: 'block',
+          margin: '0 auto',
+        }}
       />
     );
   };
