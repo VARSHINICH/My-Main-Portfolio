@@ -39,6 +39,10 @@ const StyledProject = styled.li`
   &:not(:last-of-type) {
     margin-bottom: 100px;
 
+    @media (max-width: 1200px) {
+      margin-bottom: 90px;
+    }
+
     @media (max-width: 1024px) {
       margin-bottom: 80px;
     }
@@ -47,8 +51,16 @@ const StyledProject = styled.li`
       margin-bottom: 60px;
     }
 
+    @media (max-width: 600px) {
+      margin-bottom: 50px;
+    }
+
     @media (max-width: 480px) {
       margin-bottom: 40px;
+    }
+
+    @media (max-width: 400px) {
+      margin-bottom: 35px;
     }
 
     @media (max-width: 360px) {
@@ -71,16 +83,25 @@ const StyledProject = styled.li`
 
       @media (max-width: 768px) {
         grid-column: 1 / -1;
-        padding: 30px 25px 20px;
+        grid-row: 2;
+        padding: 0 25px 20px;
         text-align: left;
       }
 
+      @media (max-width: 600px) {
+        padding: 0 20px 18px;
+      }
+
       @media (max-width: 480px) {
-        padding: 25px 20px 15px;
+        padding: 0 18px 15px;
+      }
+
+      @media (max-width: 400px) {
+        padding: 0 15px 12px;
       }
 
       @media (max-width: 360px) {
-        padding: 20px 15px 10px;
+        padding: 0 12px 10px;
       }
     }
     .project-tech-list {
@@ -114,6 +135,29 @@ const StyledProject = styled.li`
 
       @media (max-width: 768px) {
         grid-column: 1 / -1;
+        grid-row: 1;
+        height: 300px;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 600px) {
+        height: 250px;
+        margin-bottom: 18px;
+      }
+
+      @media (max-width: 480px) {
+        height: 220px;
+        margin-bottom: 15px;
+      }
+
+      @media (max-width: 400px) {
+        height: 200px;
+        margin-bottom: 12px;
+      }
+
+      @media (max-width: 360px) {
+        height: 180px;
+        margin-bottom: 10px;
       }
     }
   }
@@ -136,18 +180,27 @@ const StyledProject = styled.li`
       display: flex;
       flex-direction: column;
       justify-content: center;
-      height: 100%;
+      height: auto;
       grid-column: 1 / -1;
-      padding: 30px 25px 20px;
+      grid-row: 2;
+      padding: 0 25px 20px;
       z-index: 5;
     }
 
+    @media (max-width: 600px) {
+      padding: 0 20px 18px;
+    }
+
     @media (max-width: 480px) {
-      padding: 25px 20px 15px;
+      padding: 0 18px 15px;
+    }
+
+    @media (max-width: 400px) {
+      padding: 0 15px 12px;
     }
 
     @media (max-width: 360px) {
-      padding: 20px 15px 10px;
+      padding: 0 12px 10px;
     }
   }
 
@@ -291,9 +344,31 @@ const StyledProject = styled.li`
 
     @media (max-width: 768px) {
       grid-column: 1 / -1;
-      height: 100%;
+      grid-row: 1;
+      height: 300px;
       opacity: 1;
       pointer-events: none;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      height: 250px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 480px) {
+      height: 220px;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 400px) {
+      height: 200px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 360px) {
+      height: 180px;
+      margin-bottom: 10px;
     }
 
     a {

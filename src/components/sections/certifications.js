@@ -86,26 +86,32 @@ const StyledCertificationsSection = styled.section`
     }
 
     @media (max-width: 768px) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 40px;
       margin-top: 40px;
     }
 
     @media (max-width: 600px) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 50px;
+      gap: 35px;
+      margin-top: 35px;
     }
 
     @media (max-width: 480px) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
+      gap: 30px;
       margin-top: 30px;
     }
 
-    @media (max-width: 360px) {
+    @media (max-width: 400px) {
       grid-template-columns: 1fr;
-      gap: 30px;
+      gap: 25px;
       margin-top: 25px;
+    }
+
+    @media (max-width: 360px) {
+      gap: 20px;
+      margin-top: 20px;
     }
   }
 
@@ -172,14 +178,24 @@ const StyledCertificationsSection = styled.section`
           height: 100px;
         }
 
+        @media (max-width: 600px) {
+          width: 95px;
+          height: 95px;
+        }
+
         @media (max-width: 480px) {
-          width: 90px;
-          height: 90px;
+          width: 85px;
+          height: 85px;
+        }
+
+        @media (max-width: 400px) {
+          width: 80px;
+          height: 80px;
         }
 
         @media (max-width: 360px) {
-          width: 80px;
-          height: 80px;
+          width: 75px;
+          height: 75px;
         }
       }
     }

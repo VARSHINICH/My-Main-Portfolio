@@ -29,9 +29,19 @@ const StyledTopNav = styled.nav`
     height: 60px;
   }
 
+  @media (max-width: 600px) {
+    padding: 0 18px;
+    height: 58px;
+  }
+
   @media (max-width: 480px) {
     padding: 0 15px;
     height: 55px;
+  }
+
+  @media (max-width: 400px) {
+    padding: 0 12px;
+    height: 52px;
   }
 
   @media (max-width: 360px) {
@@ -65,13 +75,13 @@ const StyledNavList = styled.ul`
     flex-direction: column;
     padding: 20px 0;
     gap: 0;
-    transform: ${props => props.isOpen ? 'translateY(0)' : 'translateY(-100%)'};
+    transform: ${props => (props.isOpen ? 'translateY(0)' : 'translateY(-100%)')};
     transition: transform 0.3s ease;
     z-index: 1000;
     border-bottom: 1px solid rgba(255, 165, 165, 0.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    opacity: ${props => props.isOpen ? '1' : '0'};
-    visibility: ${props => props.isOpen ? 'visible' : 'hidden'};
+    opacity: ${props => (props.isOpen ? '1' : '0')};
+    visibility: ${props => (props.isOpen ? 'visible' : 'hidden')};
   }
 
   @media (max-width: 480px) {
@@ -86,7 +96,7 @@ const StyledNavList = styled.ul`
 `;
 
 const StyledNavItem = styled.a`
-  color: ${props => props.isActive ? 'var(--pink)' : 'var(--light-slate)'};
+  color: ${props => (props.isActive ? 'var(--pink)' : 'var(--light-slate)')};
   text-decoration: none;
   font-family: var(--font-mono);
   font-size: var(--fz-sm);
@@ -107,11 +117,11 @@ const StyledNavItem = styled.a`
     text-align: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     width: 100%;
-    
+
     &:last-child {
       border-bottom: none;
     }
-    
+
     &:hover {
       background: rgba(255, 255, 255, 0.05);
       transform: none;
@@ -175,15 +185,15 @@ const StyledHamburger = styled.button`
     border-radius: 1px;
 
     &:nth-child(1) {
-      transform: ${props => props.isOpen ? 'rotate(45deg) translate(6px, 6px)' : 'none'};
+      transform: ${props => (props.isOpen ? 'rotate(45deg) translate(6px, 6px)' : 'none')};
     }
 
     &:nth-child(2) {
-      opacity: ${props => props.isOpen ? '0' : '1'};
+      opacity: ${props => (props.isOpen ? '0' : '1')};
     }
 
     &:nth-child(3) {
-      transform: ${props => props.isOpen ? 'rotate(-45deg) translate(6px, -6px)' : 'none'};
+      transform: ${props => (props.isOpen ? 'rotate(-45deg) translate(6px, -6px)' : 'none')};
     }
   }
 
@@ -198,7 +208,7 @@ const StyledHamburger = styled.button`
 
 const StyledBackdrop = styled.div`
   display: none;
-  
+
   @media (max-width: 768px) {
     display: block;
     position: fixed;
@@ -208,8 +218,8 @@ const StyledBackdrop = styled.div`
     bottom: 0;
     background: rgba(0, 0, 0, 0.3);
     z-index: 999;
-    opacity: ${props => props.isOpen ? '1' : '0'};
-    visibility: ${props => props.isOpen ? 'visible' : 'hidden'};
+    opacity: ${props => (props.isOpen ? '1' : '0')};
+    visibility: ${props => (props.isOpen ? 'visible' : 'hidden')};
     transition: opacity 0.3s ease, visibility 0.3s ease;
   }
 `;
@@ -243,7 +253,7 @@ const LeftNav = () => {
       setActiveSection(currentSection);
     };
 
-    const handleClickOutside = (event) => {
+    const handleClickOutside = event => {
       if (isMobileMenuOpen && !event.target.closest('nav')) {
         setIsMobileMenuOpen(false);
       }
@@ -251,7 +261,7 @@ const LeftNav = () => {
 
     window.addEventListener('scroll', handleScroll);
     document.addEventListener('click', handleClickOutside);
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('click', handleClickOutside);
@@ -260,15 +270,15 @@ const LeftNav = () => {
 
   const handleNavClick = (e, sectionId) => {
     e.preventDefault();
-    
+
     // Close mobile menu when navigating
     setIsMobileMenuOpen(false);
-    
+
     if (sectionId === 'hero') {
       // Scroll to top for home
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     } else {
       const element = document.getElementById(sectionId);
@@ -276,7 +286,7 @@ const LeftNav = () => {
         const offsetTop = element.offsetTop - 100;
         window.scrollTo({
           top: offsetTop,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
     }
@@ -284,23 +294,20 @@ const LeftNav = () => {
 
   return (
     <>
-      <StyledBackdrop 
-        isOpen={isMobileMenuOpen}
-        onClick={() => setIsMobileMenuOpen(false)}
-      />
-      
+      <StyledBackdrop isOpen={isMobileMenuOpen} onClick={() => setIsMobileMenuOpen(false)} />
+
       <StyledTopNav>
         <StyledNavList isOpen={isMobileMenuOpen}>
           {navLinks.slice(0, 7).map(({ url, name }, i) => {
             const sectionId = url.replace('/#', '');
             const isActive = activeSection === sectionId;
-            
+
             return (
               <li key={i}>
                 <StyledNavItem
                   isActive={isActive}
                   href={url}
-                  onClick={(e) => {
+                  onClick={e => {
                     if (url.includes('.pdf')) {
                       // For PDF files, open in new tab
                       window.open(url, '_blank');
@@ -310,8 +317,7 @@ const LeftNav = () => {
                       handleNavClick(e, sectionId);
                     }
                   }}
-                  className={isActive ? 'active' : ''}
-                >
+                  className={isActive ? 'active' : ''}>
                   {name}
                 </StyledNavItem>
               </li>
@@ -319,10 +325,9 @@ const LeftNav = () => {
           })}
         </StyledNavList>
 
-        <StyledHamburger 
+        <StyledHamburger
           isOpen={isMobileMenuOpen}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           <div className="hamburger-line"></div>
           <div className="hamburger-line"></div>
           <div className="hamburger-line"></div>

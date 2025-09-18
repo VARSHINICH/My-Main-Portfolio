@@ -118,28 +118,74 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     padding: 200px 150px;
 
+    @media (max-width: 1200px) {
+      padding: 180px 120px;
+    }
+
     @media (max-width: 1080px) {
-      padding: 200px 100px;
+      padding: 160px 100px;
     }
+
+    @media (max-width: 900px) {
+      padding: 150px 80px;
+    }
+
     @media (max-width: 768px) {
-      padding: 150px 50px;
+      padding: 140px 50px;
     }
+
+    @media (max-width: 600px) {
+      padding: 130px 40px;
+    }
+
     @media (max-width: 480px) {
-      padding: 125px 25px;
+      padding: 120px 25px;
       padding-top: 100px; /* Add padding to account for the header */
+    }
+
+    @media (max-width: 400px) {
+      padding: 110px 20px;
+      padding-top: 90px;
+    }
+
+    @media (max-width: 360px) {
+      padding: 100px 15px;
+      padding-top: 80px;
     }
 
     &.fillHeight {
       padding: 0 150px;
 
+      @media (max-width: 1200px) {
+        padding: 0 120px;
+      }
+
       @media (max-width: 1080px) {
         padding: 0 100px;
       }
+
+      @media (max-width: 900px) {
+        padding: 0 80px;
+      }
+
       @media (max-width: 768px) {
         padding: 0 50px;
       }
+
+      @media (max-width: 600px) {
+        padding: 0 40px;
+      }
+
       @media (max-width: 480px) {
         padding: 0 25px;
+      }
+
+      @media (max-width: 400px) {
+        padding: 0 20px;
+      }
+
+      @media (max-width: 360px) {
+        padding: 0 15px;
       }
     }
   }
@@ -149,12 +195,32 @@ const GlobalStyle = createGlobalStyle`
     padding: 100px 0;
     max-width: 1000px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1200px) {
+      padding: 90px 0;
+    }
+
+    @media (max-width: 900px) {
       padding: 80px 0;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
+      padding: 70px 0;
+    }
+
+    @media (max-width: 600px) {
       padding: 60px 0;
+    }
+
+    @media (max-width: 480px) {
+      padding: 50px 0;
+    }
+
+    @media (max-width: 400px) {
+      padding: 45px 0;
+    }
+
+    @media (max-width: 360px) {
+      padding: 40px 0;
     }
   }
 
